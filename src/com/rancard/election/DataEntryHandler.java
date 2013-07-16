@@ -102,7 +102,8 @@ public class DataEntryHandler extends HttpServlet {
 				+ "					<div id = \"constituencies-tab\" class = \"tab\">Constituencies</div>\n"
 				+ "					<div id = \"provinces-tab\" class = \"tab\">Provinces</div>\n"
 				+ "				</div>\n"
-				+ "				<div class=\"tabs-clear\"></div>"
+				+ "				<div class = \"tabs-clear\"></div>"
+				+ "				<div class = \"tab-content\"></div>"		
 				+ "			</div>";
 		return html;
 	}

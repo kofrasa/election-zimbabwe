@@ -73,7 +73,7 @@ div#logo{
 
 div#content{
 	width: 100%;
-	height: 400px;
+	height: 600px;
 	vertical-align: top;
 	display: inline-block;
 }
@@ -106,11 +106,18 @@ div#tabs .tab{
 	-webkit-border-top-left-radius: 2px;
 	-moz-border-radius-topright: 2px;
 	-webkit-border-top-right-radius: 2px;
+	cursor: default;
 }
 
-div#tabs .tabs-clear{
+div#content .tabs-clear{
 	border-top: 1px solid #8ac;
 	clear: both;
 	height: 0;
 	overflow: hidden;
+}
+
+div#content .tab-content{
+	width: 100%;
+	height: 200px;
+	background-color: green;
 }
