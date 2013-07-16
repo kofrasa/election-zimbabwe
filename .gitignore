@@ -3,3 +3,5 @@
 *.class
 *.p12
 *.jar
+/nbproject/private/
+/build/
