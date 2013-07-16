@@ -1,45 +1,42 @@
 define(['backapp'], function (app) {
 	
   // setup application specific extensions
-	function parseQuery( query ) {
-		if( query === null ) return {};
-		if( typeof query !== 'string' ) return query;
-	
-		var params = {};
-		if( query ) {
-			var array = query.replace( /^[#?]/, '' ).split( '&' );
-			for( var i = 0, n = array.length;  i < n;  ++i ) {
-				var p = array[i].split( '=' ),
-					key = decodeURIComponent( p[0] ),
-					value = decodeURIComponent( p[1] );
-				if( key ) params[key] = value;
-			}
+
+	app.resizeViewOnly = function () {
+		// TODO: refactor with duplicate code in geoReady()
+		ww = $window.width();
+		wh = $window.height();
+		$body
+			.css({ width: ww, height: wh })
+			.toggleClass( 'hidelogo', mapWidth < 140 )
+			.toggleClass( 'narrow', ww < 770 );
+		
+		$('#spinner').css({
+			left: Math.floor( ww/2 - 64 ),
+			top: Math.floor( wh/2 - 20 )
+		});
+		
+		var mapLeft = 0, mapTop = 0, mapWidth = ww, mapHeight = wh;
+		if( useSidebar ) {
+			mapLeft = sidebarWidth;
+			mapWidth -= mapLeft;
+			var $sidebarScroll = $('#sidebar-scroll');
+			$sidebarScroll.height( wh - $sidebarScroll.offset().top );
 		}
-		return params;
-	}
-	
-	function setLanguage() {
-		var defaultLanguage = 'en';
-		var supportedLanguages = {
-			en: true,
-			es: true
-		};
-		var hl = ( params.hl || '' ).toLowerCase();
-		if( ! hl  &&  acceptLanguageHeader != '{{acceptLanguageHeader}}' ) {
-			var langs = acceptLanguageHeader.split(';')[0].split(',');
-			for( var lang, i = -1;  lang = langs[++i]; ) {
-				hl = lang.split('-')[0].toLowerCase();
-				if( hl in supportedLanguages )
-					break;
-			}
+		else {
+			var topbarHeight = $('#topbar').height() + 1;
+			mapTop = topbarHeight;
+			mapHeight -= mapTop;
 		}
-		if( !( hl in supportedLanguages ) )
-			hl = defaultLanguage;
-		params.hl = hl;
-	}
-	var params = parseQuery(location.search);
-	setLanguage();
-	
+		mapPixBounds = $('#map').css({
+			position: 'absolute',
+			left: mapLeft,
+			top: mapTop,
+			width: mapWidth,
+			height: mapHeight
+		}).bounds();
+	};
+
   return app;
   
 });

@@ -1,10 +1,5 @@
 <style type="text/css">
   html body { margin:0; padding:0; border:0 none; }
-  #container {
-    margin-left: auto;
-    margin-right:auto;
-    width: 800px;
-  }
     html body { width: ww px; height: wh px; margin:0; padding:0; overflow:hidden; color:#222; background-color:white; }
     #sidebar #maptip #testlabel a.button { font-family: Arialsans-serif; font-size:  opt.fontsize ; }
     a { font-size:13px; text-decoration:none; color:#1155CC; }
@@ -165,46 +160,70 @@
     #lightbox { display: none; position:absolute; left:0; top:0; z-index: 1000;
     min-width:100%; min-height: 100%; background-color: #000;opacity: 0.8;filter:alpha(opacity=90);}
  </style>
- 
-<div id="container">
-  <div id="header">
-    <h2>Zimbabwe Election 2013</h2>
-  </div>
-  <div id="body">
-    <div>
-      <div id="selectors">
-        <div style="margin: 0; padding: 4px;">
-        _.map( [ president, parliamentary ], button ) .join()
-        </div>
-      </div>
-      <div id="legend">
-        <div id="sidebar" style="border-right: solid #dddddd 1px">
-          <div class="sidebar-header">
-            <div id="election-title" class="title-text">{{ T('title') }}</div>
-            <div id="auto-update" class="subtitle-text">{{ T('subtitle') }}</div>
-            <div id="sidebar-results-header" class="scroller">
-              <div id="auto-update" class="subtitle-text">This
-                page updates automatically</div>
-              <div id="candidate-total"></div>
-            </div>
-          </div>
-          <div id="sidebar-scroll">
-            <div id="map-link" class="small-text" style="padding: 8px 4px 4px 4px;"></div>
-          </div>
-        </div>
-      </div>
-      <div style="width: 100%;">
-        <div id="map" style="width: 100%; height: 100%;"></div>
-      </div>
-    </div>
 
-    <div id="maptip"></div>
-    <a id="google-logo" class="logo" target="_blank" href="http://www.google.com.gh/elections/ed/gh" title="{{ T('googlePoliticsTitle') }}"> </a>
-    <div id="error" style="display: none;"></div>
-    <div id="testlabel" style="display: none;">{{ T('testData') }}</div>
-    <div id="spinner">
-      <img border="0" style="width: 128px; height: 128px;" src="{{ imgUrl('spinner-124.gif') }}" />
-    </div>
-  </div>
-  <div id="footer"></div>
+<div>
+
+	<div id="outer">
+		<div>
+			<div id="selectors">
+				<div style="margin: 0; padding: 4px;">
+					<a class="segmented button left selected" id="btn-president" title="Click for Presidential results">Presidential</a>
+					<a class="segmented button right" id="btn-senate" title="Click for Senate results">Senate</a>
+					<a class="segmented button right" id="btn-house" title="Click for House results">House</a>
+				</div>
+			</div>
+			<div id="legend">
+				<div id="sidebar" style="border-right: solid #dddddd 1px">
+					<div class="sidebar-header">
+						<div id="election-title" class="title-text">Zimbabwe General Elections</div>
+						<div id="auto-update" class="subtitle-text">31st July, 2013</div>
+						<div id="sidebar-results-header" class="scroller">
+							<div id="auto-update" class="subtitle-text">This page updates automatically</div>
+							<div id="candidate-total">
+								<div class="tipreporting" style="padding-left: 5px;">0% reporting (0 / 0)</div>
+								<table class="candidates" cellpadding="8px" cellspacing="0">
+									<tbody>
+										<tr>
+											<th style="text-align: left; padding-bottom: 4px;">Candidate</th>
+											<th style="text-align: right; padding-bottom: 4px;"></th>
+											<th style="text-align: center; padding-bottom: 4px;">Votes</th>
+										</tr>
+										<tr class="left candidate-row">
+											<td><div
+													style="float: left; padding-right: 10px; margin-top: 8px">
+													<div class="candidate-area-patch"
+														style="background: #FF0000; width: 14px; height: 14px; border: 1"></div>
+												</div>
+												<div style="float: left" class="candidate-name">
+													<div class="first-name">First Name</div>
+													<div class="last-name" style="font-weight: bold;">Last Name</div>
+												</div></td>
+											<td align="left"><b>Party</b></td>
+											<td align="center"><div class="candidate-percent">percentage %</div>
+												<div class="candidate-votes">votes</div></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+					<div id="sidebar-scroll" style="height: 234px;">
+						<div id="map-link" class="small-text" style="padding: 8px 4px 4px 4px;"></div>
+					</div>
+				</div>
+			</div>
+			<div style="width: 100%;">
+				<div id="map"></div>
+			</div>
+		</div>
+	</div>
+
+	<div id="maptip"></div>
+	<a id="google-logo" class="logo" target="_blank" href="http://www.google.com.gh/elections/ed/gh" title="{{ T('googlePoliticsTitle') }}"> </a>
+	<div id="error" style="display: none;"></div>
+	<div id="testlabel" style="display: none;">{{ T('testData') }}</div>
+	<div id="spinner" style="display: none;">
+		<img border="0" style="width: 128px; height: 128px;"
+			src="/images/spinner-124.gif" />
+	</div>
 </div>

@@ -1,14 +1,12 @@
 // Filename: router.js
 define([
-  'app',
-  'models/index'
-], function(app, models) {
-  console.log("Loading router...");
+  'app'
+], function(app) {
 
   var router = app.router;
 
   router.initialize({
-    "": {name: "index", view: "index", layout: "main"}
+    "": {name: "index", view: "index"}
   });
 
   return router;
