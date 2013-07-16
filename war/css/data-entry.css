@@ -10,11 +10,13 @@ body {
 	color: #000; 
 	margin:0; 
 	padding:0;
+	font-size: 85%;
 }
 
 div {
 	display: block;
 }
+
 ul{
 	display: block;
 	list-style-type: disc;
@@ -22,12 +24,93 @@ ul{
 	-webkit-margin-after: 1em;
 	-webkit-margin-start: 0px;
 	-webkit-margin-end: 0px;
-	-webkit-padding-start: 40px;
+	
+}
+
+li {
+	display: inline;
+	line-height: 1.5em;
+	padding: 0 0 .5em 0;
+}
+
+div#header{	
+	margin: 0;
+	padding-left: 0;
+	padding-right: 0;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	display: inline-block;
+	width: 100%;
 }
 
 div#explorer{
 	width: auto;
 	margin: 0 10px;
+	height: 400px;	
+}
+
+div#user-info{
+	text-align: right;
+	white-space: nowrap;
+	width: 50%;
+	float: right;
+}
+
+div#user-info ul{
+	margin: 0;
+	width: 100%;
+}
+
+div#user-info ul li{
+	margin-left: 5px;
+}
+
+div#logo{
+	width: 50%;
+	float: left;
+	height: 20px;
+}
+
+div#content{
+	width: 100%;
 	height: 400px;
-	background-color: red;
+	vertical-align: top;
+	display: inline-block;
+}
+
+div#tabs{
+	width: 100%;
+	margin-top: 25px;
+	position: relative;
+	border: 0;
+	padding: 0;
+	list-style: none;
+	cursor: default;
+	outline: none;	
+	text-align: left;
+	font-size: 90%;
+}
+
+div#tabs .tab{
+	margin: 1px 4px 0 0;	
+	float: left;
+	position: relative;
+	border: 1px solid #8ac;
+	border-bottom: 0;
+	padding: 4px 9px;
+	color: #000;
+	background: #e5ecf9;
+	border-top-left-radius: 2px;
+	border-top-right-radius: 2px;
+	-moz-border-radius-topleft: 2px;
+	-webkit-border-top-left-radius: 2px;
+	-moz-border-radius-topright: 2px;
+	-webkit-border-top-right-radius: 2px;
+}
+
+div#tabs .tabs-clear{
+	border-top: 1px solid #8ac;
+	clear: both;
+	height: 0;
+	overflow: hidden;
 }

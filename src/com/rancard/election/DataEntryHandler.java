@@ -50,7 +50,8 @@ public class DataEntryHandler extends HttpServlet {
 				
 				String response = writeHTMLStart()
 						+ writeHeader(user.getEmail(), userService.createLogoutURL(thisURL))
-						+writeHTMLEnd();
+						+ writeContent()
+						+ writeHTMLEnd();
 				
 				
 				resp.getWriter().println(response);
@@ -76,22 +77,39 @@ public class DataEntryHandler extends HttpServlet {
 	}
 
 	private String writeHeader(String email, String signOutURL) {
-		String header = "	<div id = \"explorer\">\n" 
+		String header = "		<div id = \"explorer\">\n" 
 				+ "		<div id = \"header\">\n"
-				+ "				<div id = \"user-info\">\n" 
-				+ "					<ul>\n" 
-				+ "						<li><strong>" + email	+ "</strong></li>\n" 
-				+ "						<li><a href=\"" + signOutURL + "\">sign out</a></li>\n" 
-				+ "					</ul>\n" 
-				+ "				</div>\n" 
+				+ "			<div id = \"logo\">\n"
 				+ "			</div>\n"
+				+ "			<div id = \"user-info\">\n" 
+				+ "				<ul>\n" 
+				+ "					<li><strong>" + email	+ "</strong></li>\n" 
+				+ "					<li>|</li>"
+				+ "					<li><a href=\"" + signOutURL + "\">sign out</a></li>\n" 
+				+ "				</ul>\n" 
+				+ "			</div>\n" 
 				+ "		</div>\n";
 
 		return header;
 	}
 	
+	private String writeContent(){
+		String html = "			<div id = \"content\">"
+				+ "				<div id = \"tabs\">\n"
+				+ "					<div id = \"users-tab\" class = \"tab\">Users</div>\n"
+				+ "					<div id = \"pollingstations-tab\" class = \"tab\">Polling Stations</div>\n"
+				+ "					<div id = \"wards-tab\" class = \"tab\">Wards</div>\n"
+				+ "					<div id = \"constituencies-tab\" class = \"tab\">Constituencies</div>\n"
+				+ "					<div id = \"provinces-tab\" class = \"tab\">Provinces</div>\n"
+				+ "				</div>\n"
+				+ "				<div class=\"tabs-clear\"></div>"
+				+ "			</div>";
+		return html;
+	}
+	
 	private String writeHTMLEnd(){
-		String html = "	</body>\n"
+		String html = "		</div>\n"
+				+ "	</body>\n"
 				+ "</html>\n";
 		
 		return html;
