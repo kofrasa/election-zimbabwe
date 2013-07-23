@@ -2,7 +2,6 @@ package com.rancard.election.models;
 
 import java.util.Date;
 
-import javax.jdo.annotations.IdGeneratorStrategy;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
@@ -12,9 +11,6 @@ import javax.jdo.annotations.PrimaryKey;
 public class User {
 	
 	@PrimaryKey
-	@Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
-    private Long id;
-	
 	@Persistent
 	private String email;
 	
@@ -39,9 +35,17 @@ public class User {
 	public String getEmail() {
 		return email;
 	}
+	
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
 	public Role getRole() {
 		return role;
+	}
+	
+	public void setRole(Role role) {
+		this.role = role;
 	}
 	
 	public Date getDateCreated() {
@@ -50,6 +54,10 @@ public class User {
 	
 	public Date getLastLoggedIn() {
 		return lastLoggedIn;
+	}
+	
+	public void setLastLoggedIn(Date lastLoggedIn) {
+		this.lastLoggedIn = lastLoggedIn;
 	}
 	
 

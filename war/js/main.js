@@ -8,6 +8,7 @@ requirejs.config({
     templates: '../templates',
     // path to views folder
     views: 'views',
+    layouts: 'views/layout',
     // path to backapp folder
     backapp: 'lib/backapp'
   }

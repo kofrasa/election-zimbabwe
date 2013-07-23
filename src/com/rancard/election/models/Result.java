@@ -13,30 +13,47 @@ public class Result {
     private Long id;
 	
 	@Persistent
-	private User enteredBy;
+	private String enteredBy;
 	
 	@Persistent
 	private int result;
 	
 	@Persistent
-	private Candidate candidate;
+	private long candidate;
 	
 	@Persistent
 	private boolean approved;
 	
 	@Persistent
-	private User approvedBy; 
+	private String approvedBy; 
+	
+	@Persistent
+	private String pollingStation;
+	
+	@Persistent
+	private Integer ward;
+	
+	@Persistent
+	private String constituency;
+	
+	@Persistent
+	private String province;
 	
 	
-	public Result(User enteredBy, int result, Candidate candidate, boolean approved, User approvedBy){
+	public Result(String enteredBy, int result, long candidate, boolean approved, String approvedBy, String pollingStation,
+			Integer ward, String constituency, String province){
 		this.enteredBy = enteredBy;
 		this.result = result;
 		this.candidate = candidate;		
 		this.approved = approved;
-		this.approvedBy = approvedBy;		
+		this.approvedBy = approvedBy;
+		this.pollingStation = pollingStation;
+		this.ward = ward;
+		this.constituency = constituency;
+		this.province = province;
 	}
 
-	public User getEnteredBy() {
+	public String getEnteredBy() {
 		return enteredBy;
 	}
 
@@ -45,7 +62,7 @@ public class Result {
 	}
 
 
-	public Candidate getCandidate() {
+	public long getCandidate() {
 		return candidate;
 	}
 
@@ -55,7 +72,23 @@ public class Result {
 	}
 
 
-	public User getApprovedBy() {
+	public String getApprovedBy() {
 		return approvedBy;
+	}
+
+	public String getPollingStation() {
+		return pollingStation;
+	}
+
+	public Integer getWard() {
+		return ward;
+	}
+
+	public String getConstituency() {
+		return constituency;
+	}
+
+	public String getProvince() {
+		return province;
 	}
 }

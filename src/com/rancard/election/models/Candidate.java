@@ -22,13 +22,13 @@ public class Candidate {
 	private String middleName;
 	
 	@Persistent
-	private Party party;
+	private String party;
 	
 	@Persistent
 	private ElectionType electionType;
 	
 	
-	public Candidate(String firstName, String lastName, String middleName, Party party, ElectionType electionType){
+	public Candidate(String firstName, String lastName, String middleName, String party, ElectionType electionType){
 		this.firstName = firstName;
 		this.lastName = firstName;
 		this.middleName = middleName;
@@ -52,7 +52,7 @@ public class Candidate {
 		return middleName;
 	}
 
-	public Party getParty() {
+	public String getParty() {
 		return party;
 	}
 	

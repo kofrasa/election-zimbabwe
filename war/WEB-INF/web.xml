@@ -8,9 +8,41 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
     <servlet-name>DataEntryHandler</servlet-name>
     <servlet-class>com.rancard.election.DataEntryHandler</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>UserApi</servlet-name>
+    <servlet-class>com.rancard.election.json.UserApi</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>PartyApi</servlet-name>
+    <servlet-class>com.rancard.election.json.PartyApi</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>CandidateApi</servlet-name>
+    <servlet-class>com.rancard.election.json.CandidateApi</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>ProvinceApi</servlet-name>
+    <servlet-class>com.rancard.election.json.ProvinceApi</servlet-class>
+  </servlet>
   <servlet-mapping>
     <servlet-name>DataEntryHandler</servlet-name>
     <url-pattern>/data_entry</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>UserApi</servlet-name>
+    <url-pattern>/user</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>PartyApi</servlet-name>
+    <url-pattern>/party</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>CandidateApi</servlet-name>
+    <url-pattern>/candidate</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ProvinceApi</servlet-name>
+    <url-pattern>/province</url-pattern>
   </servlet-mapping>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
