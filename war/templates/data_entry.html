@@ -1,0 +1,26 @@
+
+<div id = "explorer">
+	<div id = "header">
+		<div id = "logo">
+		</div>
+		<div id = "user-info">
+			<ul> 
+				<li><strong>{{user_email}}</strong></li>
+				<li>|</li>
+				<li><a href="{{user_signout_url}}">sign out</a></li> 
+			</ul>
+		</div> 
+	</div>
+	<div id = "content">
+		<div id = "tabs">
+			<div id = "users-tab" class = "tab selected"><a href="#">Users</a></div>
+			<div id = "pollingstations-tab" class = "tab"><a href="#polling">Polling Stations</a></div>
+			<div id = "wards-tab" class = "tab"><a href="#ward">Wards</a></div>
+			<div id = "constituencies-tab" class = "tab"><a href="#constituency">Constituencies</a></div>
+			<div id = "provinces-tab" class = "tab"><a href="#province">Provinces</a></div>
+		</div>
+		<div class="tabs-clear"></div>
+		<div class="tab-filter" id="tab-filter"></div>	
+		<div class="tab-content" id="tab-content"></div>	
+	</div>
+</div>
