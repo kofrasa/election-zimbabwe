@@ -1,6 +1,5 @@
 package com.rancard.election.models;
 
-import java.util.List;
 
 import javax.jdo.annotations.IdGeneratorStrategy;
 import javax.jdo.annotations.PersistenceCapable;
@@ -18,30 +17,75 @@ public class PollingStation {
 	private String name;
 	
 	@Persistent
-	private Ward ward;
+	private Long wardID;
 	
 	@Persistent
-	private List<Result> results;
+	private Long wardNumber;
 	
-	public PollingStation(String name, Ward ward, List<Result> results) {
-		this.name=name;
-		this.ward=ward;
-		this.results = results;
+	@Persistent
+	private Long constituencyID;
+	
+	@Persistent
+	private String constituencyName;
+	
+	@Persistent
+	private Long provinceID;
+	
+	@Persistent
+	private String provinceName;
+	
+	@Persistent
+	private Boolean hasResult;
+	
+	
+
+	public PollingStation(String name, Long wardID, Long wardNumber, Long constituencyID, String constituencyName, Long provinceID, String provinceName) {
+		this.name = name;
+		this.wardID = wardID;
+		this.wardNumber = wardNumber;
+		this.constituencyID = constituencyID;
+		this.constituencyName = constituencyName;
+		this.provinceID = provinceID;
+		this.provinceName = provinceName;
 	}
 
+	public Long getID() {
+		return id;
+	}
 	public String getName() {
 		return name;
 	}
 
-	public Ward getWard() {
-		return ward;
+	public Long getWardID() {
+		return wardID;
 	}
 
-	public List<Result> getResults() {
-		return results;
+	public Long getWardNumber() {
+		return wardNumber;
 	}
-	
-	
-	
+
+	public Long getConstituencyID() {
+		return constituencyID;
+	}
+
+	public String getConstituencyName() {
+		return constituencyName;
+	}
+
+	public Long getProvinceID() {
+		return provinceID;
+	}
+
+	public String getProvinceName() {
+		return provinceName;
+	}
+
+	public Boolean getHasResult() {
+		return hasResult;
+	}
+
+	public void setHasResult(Boolean hasResult) {
+		this.hasResult = hasResult;
+	}
 	
 }

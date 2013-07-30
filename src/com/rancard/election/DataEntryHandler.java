@@ -1,9 +1,11 @@
 package com.rancard.election;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Date;
+import java.util.List;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.servlet.http.HttpServlet;
@@ -17,8 +19,7 @@ import com.rancard.election.persistence.UserDataAccess;
 
 @SuppressWarnings("serial")
 public class DataEntryHandler extends HttpServlet {
-	private static final Logger log = Logger.getLogger(DataEntryHandler.class
-			.getName());
+	private static final Logger log = Logger.getLogger(DataEntryHandler.class.getName());
 
 	@Override
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)
@@ -33,10 +34,10 @@ public class DataEntryHandler extends HttpServlet {
 		resp.setContentType("text/html");
 		if (user != null) {
 			log.info("User has logged in");
-			com.rancard.election.models.User dbaseUser = UserDataAccess
-					.findUser(user.getEmail());
+			List<com.rancard.election.models.User> dbaseUser = UserDataAccess
+					.getUsers(user.getEmail());
 
-			if (dbaseUser == null) {
+			if (dbaseUser == null || dbaseUser.isEmpty()) {
 				log.info("User does not have access");
 				resp.getWriter()
 						.println(
@@ -47,14 +48,34 @@ public class DataEntryHandler extends HttpServlet {
 										+ "\">sign out</a>.</p>");
 			} else {
 				resp.setContentType("text/html");
+				dbaseUser.get(0).setLastLoggedIn(new Date());
+				UserDataAccess.insert(dbaseUser.get(0));
 				
-				String response = writeHTMLStart()
-						+ writeHeader(user.getEmail(), userService.createLogoutURL(thisURL))
-						+ writeContent()
-						+ writeHTMLEnd();
+				BufferedReader reader = null;				
+				String response = "";
+				try	{
+					reader = new BufferedReader(new FileReader("js/data_entry/data_entry.html"));		
+					String line = null;
+			
+					while((line = reader.readLine())!=null){
+						response = response + line + "\n";
+					}
+					
+					response = response.replace("{{user_role}}", dbaseUser.get(0).getRole().toString());
+					response = response.replace("{{user_email}}", user.getEmail());
+					response = response.replace("{{user_signout_url}}", userService.createLogoutURL(thisURL));
+					
+					resp.getWriter().println(response);
+				}catch(Exception e){
+					log.log(Level.SEVERE, "There was a problem: "+e.getMessage());
+					resp.getWriter().println("ERROR");
+					
+				}finally{
+					if(reader !=null){
+						reader.close();
+					}
+				}			
 				
-				
-				resp.getWriter().println(response);
 			}
 		} else {
 			resp.getWriter().println(
@@ -64,55 +85,6 @@ public class DataEntryHandler extends HttpServlet {
 		}
 	}
 
-	private String writeHTMLStart() {
-		String html = "<!DOCTYPE html>\n" 
-				+ "<html>\n" 
-				+ "	<head>\n"
-				+ "		<title>Election Results from Google (Data Entry)</title>\n" 
-				+ "		<link rel=\"stylesheet\" type=\"text/css\" href=\"css/data-entry.css\">\n"
-				+ "	</head>\n"
-				+ "	<body>\n";
 
-		return html;
-	}
-
-	private String writeHeader(String email, String signOutURL) {
-		String header = "		<div id = \"explorer\">\n" 
-				+ "		<div id = \"header\">\n"
-				+ "			<div id = \"logo\">\n"
-				+ "			</div>\n"
-				+ "			<div id = \"user-info\">\n" 
-				+ "				<ul>\n" 
-				+ "					<li><strong>" + email	+ "</strong></li>\n" 
-				+ "					<li>|</li>"
-				+ "					<li><a href=\"" + signOutURL + "\">sign out</a></li>\n" 
-				+ "				</ul>\n" 
-				+ "			</div>\n" 
-				+ "		</div>\n";
-
-		return header;
-	}
 	
-	private String writeContent(){
-		String html = "			<div id = \"content\">"
-				+ "				<div id = \"tabs\">\n"
-				+ "					<div id = \"users-tab\" class = \"tab\">Users</div>\n"
-				+ "					<div id = \"pollingstations-tab\" class = \"tab\">Polling Stations</div>\n"
-				+ "					<div id = \"wards-tab\" class = \"tab\">Wards</div>\n"
-				+ "					<div id = \"constituencies-tab\" class = \"tab\">Constituencies</div>\n"
-				+ "					<div id = \"provinces-tab\" class = \"tab\">Provinces</div>\n"
-				+ "				</div>\n"
-				+ "				<div class = \"tabs-clear\"></div>"
-				+ "				<div class = \"tab-content\"></div>"		
-				+ "			</div>";
-		return html;
-	}
-	
-	private String writeHTMLEnd(){
-		String html = "		</div>\n"
-				+ "	</body>\n"
-				+ "</html>\n";
-		
-		return html;
-	}
 }

@@ -1,40 +1,51 @@
 package com.rancard.election.models;
 
-import java.util.List;
 
 import javax.jdo.annotations.IdGeneratorStrategy;
+import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
 
+
+@PersistenceCapable
 public class Constituency {
+
 	@PrimaryKey
 	@Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
-    private Long id;
+    private Long id;	
 	
 	@Persistent
 	private String name;
 	
 	@Persistent
-	private Province province;
+	private Long province;
 	
 	@Persistent
-	private List<Result> overrideResults;
+	private String provinceName;
 	
-	public Constituency(String name, Province province, List<Result> overrideResults) {
+	public Constituency(String name, long province, String provinceName) {
 		this.name = name;
 		this.province = province;
-		this.overrideResults = overrideResults;
+		this.provinceName = provinceName;
 	}
+	
 	
 	public String getName() {
 		return name;
 	}
 
-	public Province getProvince() {
+	public long getProvince() {
 		return province;
 	}
 
-	public List<Result> getOverrideResults() {
-		return overrideResults;
+	
+	public String getProvinceName(){
+		return provinceName;
 	}
+
+
+	public Long getId() {
+		return id;
+	}
+
 }
