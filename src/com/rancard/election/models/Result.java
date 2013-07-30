@@ -5,6 +5,7 @@ import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
 
+
 @PersistenceCapable
 public class Result {
 	
@@ -16,59 +17,75 @@ public class Result {
 	private String enteredBy;
 	
 	@Persistent
-	private int result;
+	private long result;
 	
 	@Persistent
-	private long candidate;
+	private Long candidate;
 	
 	@Persistent
-	private boolean approved;
+	private String party;
+
+	@Persistent
+	private ElectionType electionType;
+	
+	@Persistent
+	private Boolean approved;
 	
 	@Persistent
 	private String approvedBy; 
 	
 	@Persistent
-	private String pollingStation;
+	private Long pollingStation;
 	
 	@Persistent
-	private Integer ward;
+	private Long ward;
 	
 	@Persistent
-	private String constituency;
+	private Long constituency;
+	
+	@Persistent 
+	private String candidateName;
 	
 	@Persistent
-	private String province;
+	private Long province;
 	
 	
-	public Result(String enteredBy, int result, long candidate, boolean approved, String approvedBy, String pollingStation,
-			Integer ward, String constituency, String province){
+	public Result(String enteredBy, long result, Long candidate, String candidateName, Boolean approved, String approvedBy, 
+			ElectionType electionType, String party, Long pollingStation, Long ward, Long constituency,  Long province){
 		this.enteredBy = enteredBy;
 		this.result = result;
 		this.candidate = candidate;		
 		this.approved = approved;
 		this.approvedBy = approvedBy;
+		this.electionType = electionType;
+		this.party = party;
 		this.pollingStation = pollingStation;
 		this.ward = ward;
 		this.constituency = constituency;
 		this.province = province;
+		this.candidateName = candidateName;
 	}
 
 	public String getEnteredBy() {
 		return enteredBy;
 	}
 
-	public int getResult() {
+	public long getResult() {
 		return result;
 	}
 
 
-	public long getCandidate() {
+	public Long getCandidate() {
 		return candidate;
 	}
 
 
-	public boolean isApproved() {
+	public Boolean isApproved() {
 		return approved;
+	}
+	
+	public void isApproved(Boolean approved) {
+		this.approved = approved;
 	}
 
 
@@ -76,19 +93,44 @@ public class Result {
 		return approvedBy;
 	}
 
-	public String getPollingStation() {
+	public void setApprovedBy(String approvedBy) {
+		this.approvedBy = approvedBy;
+	}
+	
+	public Long getPollingStation() {
 		return pollingStation;
 	}
 
-	public Integer getWard() {
+	public Long getWard() {
 		return ward;
 	}
 
-	public String getConstituency() {
+	public Long getConstituency() {
 		return constituency;
 	}
 
-	public String getProvince() {
+	public Long getProvince() {
 		return province;
 	}
+	
+	public String getParty() {
+		return party;
+	}
+
+	public ElectionType getElectionType() {
+		return electionType;
+	}
+
+	public String getCandidateName() {
+		return candidateName;
+	}
+	
+	public Boolean getApproved() {
+		return approved;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
 }

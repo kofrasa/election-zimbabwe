@@ -13,13 +13,7 @@ public class Candidate {
     private Long id;
 	
 	@Persistent
-	private String firstName;
-	
-	@Persistent
-	private String lastName;
-	
-	@Persistent 
-	private String middleName;
+	private String name;
 	
 	@Persistent
 	private String party;
@@ -27,30 +21,46 @@ public class Candidate {
 	@Persistent
 	private ElectionType electionType;
 	
+	@Persistent
+	private Long constituency;
 	
-	public Candidate(String firstName, String lastName, String middleName, String party, ElectionType electionType){
-		this.firstName = firstName;
-		this.lastName = firstName;
-		this.middleName = middleName;
+	@Persistent
+	private String constituencyName;
+		
+	@Persistent
+	private long result;
+	
+	private Boolean resultOverriden;
+	
+	private String overridenBy;
+	
+	
+	public Candidate(String name, String party, ElectionType electionType, 
+			Long constituency, String constituencyName, long result){
+		this.name = name;
 		this.party = party;	
 		this.electionType = electionType;
+		this.constituency = constituency;
+		this.constituencyName = constituencyName;
+		this.result = result;
 	}
 	
+	public long getResult() {
+		return result;
+	}
+
+	public Long getConstituency() {
+		return constituency;
+	}
+
 	public Long getId() {
 		return id;
 	}
 
-	public String getFirstName() {
-		return firstName;
+	public String getName() {
+		return name;
 	}
 
-	public String getLastName() {
-		return lastName;
-	}
-
-	public String getMiddleName() {
-		return middleName;
-	}
 
 	public String getParty() {
 		return party;
@@ -60,7 +70,29 @@ public class Candidate {
 		return electionType;
 	}
 
+	public String getConstituencyName() {
+		return constituencyName;
+	}
 
+	public void setResult(long result) {
+		this.result = result;
+	}
+
+	public Boolean getResultOverriden() {
+		return resultOverriden;
+	}
+
+	public String getOverridenBy() {
+		return overridenBy;
+	}
+
+	public void setResultOverriden(Boolean resultOverriden) {
+		this.resultOverriden = resultOverriden;
+	}
+
+	public void setOverridenBy(String overridenBy) {
+		this.overridenBy = overridenBy;
+	}
 
 	
 }

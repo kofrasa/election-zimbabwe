@@ -18,15 +18,19 @@ public class User {
 	private Role role;
 	
 	@Persistent
+	private String name;
+	
+	@Persistent
 	private Date dateCreated;
 	
 	@Persistent
 	private Date lastLoggedIn;
 	
 	
-	public User(String email, Role role, Date dateCreated, Date lastLoggedIn){
+	public User(String email, Role role, String name, Date dateCreated, Date lastLoggedIn){
 		this.email = email;
 		this.role = role;
+		this.name = name;
 		this.dateCreated = dateCreated;
 		this.lastLoggedIn = lastLoggedIn;
 	}
@@ -58,6 +62,11 @@ public class User {
 	
 	public void setLastLoggedIn(Date lastLoggedIn) {
 		this.lastLoggedIn = lastLoggedIn;
+	}
+
+
+	public String getName() {
+		return name;
 	}
 	
 

@@ -3,6 +3,8 @@ package com.rancard.election;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Date;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -30,12 +32,12 @@ public class DataEntryHandler extends HttpServlet {
 		String thisURL = req.getRequestURI();
 
 		resp.setContentType("text/html");
-		/*if (user != null) {
+		if (user != null) {
 			log.info("User has logged in");
-			com.rancard.election.models.User dbaseUser = UserDataAccess
+			List<com.rancard.election.models.User> dbaseUser = UserDataAccess
 					.getUsers(user.getEmail());
 
-			if (dbaseUser == null) {
+			if (dbaseUser == null || dbaseUser.isEmpty()) {
 				log.info("User does not have access");
 				resp.getWriter()
 						.println(
@@ -44,8 +46,10 @@ public class DataEntryHandler extends HttpServlet {
 										+ "!  You do not have permission to use this service. You can <a href=\""
 										+ userService.createLogoutURL(thisURL)
 										+ "\">sign out</a>.</p>");
-			} else {*/
+			} else {
 				resp.setContentType("text/html");
+				dbaseUser.get(0).setLastLoggedIn(new Date());
+				UserDataAccess.insert(dbaseUser.get(0));
 				
 				BufferedReader reader = null;				
 				String response = "";
@@ -57,8 +61,9 @@ public class DataEntryHandler extends HttpServlet {
 						response = response + line + "\n";
 					}
 					
-					//response = response.replace("{{user_email}}", user.getEmail());
-					//response = response.replace("{{user_signout_url}}", userService.createLogoutURL(thisURL));
+					response = response.replace("{{user_role}}", dbaseUser.get(0).getRole().toString());
+					response = response.replace("{{user_email}}", user.getEmail());
+					response = response.replace("{{user_signout_url}}", userService.createLogoutURL(thisURL));
 					
 					resp.getWriter().println(response);
 				}catch(Exception e){
@@ -71,13 +76,13 @@ public class DataEntryHandler extends HttpServlet {
 					}
 				}			
 				
-			/*}
+			}
 		} else {
 			resp.getWriter().println(
 					"<p>Please <a href=\""
 							+ userService.createLoginURL(thisURL)
 							+ "\">sign in</a>.</p>");
-		}*/
+		}
 	}
 
 

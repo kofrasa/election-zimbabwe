@@ -87,12 +87,33 @@ div#logo{
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0088cc',endColorstr='#ff0077b3',GradientType=0);
 }
 
-#data-table tbody tr{
+#data-table .users tbody tr{
 	cursor: pointer;
 }
-#data-table tr.selected td{
+#data-table .users tr.selected td{
 	background-color: #0081c2;
 	color:white;
+}
+
+#data-table .pollingstation tbody tr{
+	cursor: pointer;
+}
+#data-table .constituencies tr.selected td{
+	background-color: #0081c2;
+	color:white;
+}
+
+#data-table .pollingstation tr.selected td{
+	background-color: #0081c2;
+	color:white;
+}
+
+.polling_result table{
+	margin-bottom: -8px;
+	margin-top: -8px;
+	margin-left: 20px;
+	-webkit-border-radius:0px;
+	border-radius: 0px;
 }
 
 

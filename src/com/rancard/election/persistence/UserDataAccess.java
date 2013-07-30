@@ -13,8 +13,8 @@ import com.rancard.election.models.User;
 
 public class UserDataAccess {
 	
-	public static void insert(String email, Role role, Date dateCreated, Date lastLoggedIn){
-		User user = new User(email, role, dateCreated, lastLoggedIn);
+	public static void insert(String email, Role role, String name, Date dateCreated, Date lastLoggedIn){
+		User user = new User(email, role, name, dateCreated, lastLoggedIn);
 		insert(user);
 	}
 	

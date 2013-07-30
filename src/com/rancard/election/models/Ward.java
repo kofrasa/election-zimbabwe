@@ -1,30 +1,59 @@
 package com.rancard.election.models;
 
+import javax.jdo.annotations.IdGeneratorStrategy;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
 
 @PersistenceCapable
-public class Ward {
+public class Ward {	
 	@PrimaryKey
-	@Persistent
-	private int number;
+	@Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
+    private Long id;	
 	
 	@Persistent
-	private String constituency;
+	private Long wardNumber;
+	
+	@Persistent
+	private Long constituencyID;
+	
+	@Persistent
+	private String constituencyName;
+	
+	@Persistent
+	private Long provinceID;
+	
+	@Persistent
+	private String provinceName;
 	
 	
-	public Ward(int number, String constituency) {
-		this.number = number;
-		this.constituency = constituency;
+	
+	public Ward(Long number, Long constituencyID, String constituencyName, Long provinceID, String provinceName) {
+		this.wardNumber = number;
+		this.constituencyID = constituencyID;
+		this.constituencyName =constituencyName;
+		this.provinceID = provinceID;
+		this.provinceName = provinceName;
 	}
 
-	public int getNumber() {
-		return number;
+	public Long getWardNumber() {
+		return wardNumber;
 	}
 
-	public String getConstituency() {
-		return constituency;
+	public Long getConstituencyID() {
+		return constituencyID;
+	}
+
+	public String getConstituencyName() {
+		return constituencyName;
+	}
+
+	public Long getProvinceID() {
+		return provinceID;
+	}
+
+	public String getProvinceName() {
+		return provinceName;
 	}
 
 }
