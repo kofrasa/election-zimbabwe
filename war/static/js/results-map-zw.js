@@ -516,7 +516,7 @@ function renderConstituencyWards( result ) {
 				'</div>',
 			'</div>',
 			'<div id="subregion">',
-			'<div style="clear:both;padding-left:15px;font-weight:bold;">Wards</div>',
+			'<div style="clear:both;padding-left:15px;font-weight:bold;" class="active-region">Wards</div>',
 			'<div id="subregion_list">'
 	);
 	
@@ -540,6 +540,7 @@ function initWardEvents( region, result ) {
 			return;
 		}		
 		$(".ward-list").hide();
+		$("#subregion").children().first().html("Go to Wards");
 		renderPollingStations( $ward.data("num") );
 	});
 	
@@ -547,8 +548,6 @@ function initWardEvents( region, result ) {
 		var wardResult = result[wardNumber];
 		var names = [];
 		var state = {};
-		console.log("WARD>>");
-		console.log(wardResult);
 		for (var k in wardResult) {
 			var temp = 0;
 			for (var q in wardResult[k]) {
@@ -587,22 +586,22 @@ function initWardEvents( region, result ) {
 		contentString = S(contentString,  "</div>");
 		
 		$("#subregion_list").append(contentString);
+		$('#subregion_list ul:last').css('border','none');
 		
 		// render results
-//		$("#subregion_list li").on('click', function (e) {
 		$(".polling-list li").on('click', function (e) {
 			
 			var $sidebar = $('<ul></ul>');
-			var items = $("#subregion li");	
-
-			$.each(items, function (key,value) {
+			var $currentItem = $(this);
+			
+			$(".polling-list li").each(function (index, value) {
 				$sidebar.append(value);
 				$(value).off('click').on('click', function (e) {
 					var $value = $(this);
-					$("#subregion li").removeClass('selected-region');
+					$(".polling-list li").removeClass('selected-region');
 					$value.addClass('selected-region');	
 					
-					var $result_div = $('#constituency_result_div').empty().hide();				
+					var $result_div = $('#polling-station-result').empty().hide();				
 					var content;
 					if (params.contest === 'president') {
 						var candidates = getTopCandidates(convertToCandidates(wardResult[$value.text()]), 'votes', 24);					
@@ -634,9 +633,9 @@ function initWardEvents( region, result ) {
 				'border':'thin outset #ccc', 'margin-left':'10px','float':'left','display':'inline-block'});		
 			
 			// replace subregion content
-			$('#subregion_list').html($sidebar)
-				.append('<div id="constituency_result_div" style="float:left"></div>')
-				.append('<div style="clear:both"></div>');
+			$('.polling-list').html($sidebar)
+				.append('<div id="polling-station-result" style="float:left"></div>')
+				.append('<div style="clear:both"></div>');						
 			
 			var padding = 200; // total padding
 			$sidebar.animate({scrollTop: $currentItem.offset().top-padding},'slow');
