@@ -109,7 +109,7 @@ public class ConstituencyDataAccess {
 			}
 			
 			for(Candidate candidate: candidates){
-				Map<String, Long> partyResult = (Map<String, Long>)((List<Map<String, Long>>)resultSummary.get(constituency.getName())).get(0);		
+				Map<String, Long> partyResult = (Map<String, Long>)((List<Map<String, Long>>)resultSummary.get(constituency.getName().trim())).get(0);		
 				if(partyResult.containsKey(candidate.getParty())){
 					partyResult.put(candidate.getParty(), partyResult.get(candidate.getParty()) + candidate.getResult());
 				}else{
@@ -117,7 +117,7 @@ public class ConstituencyDataAccess {
 				}
 			}
 			
-			Map<String, Long> stats = (Map<String, Long>)((List<Map<String, Long>>)resultSummary.get(constituency.getName())).get(1);
+			Map<String, Long> stats = (Map<String, Long>)((List<Map<String, Long>>)resultSummary.get(constituency.getName().trim())).get(1);
 			
 			List<PollingStationAggregate> agg = PollingStationAggregateDataAccess.getPollingStationAggregate(constituency.getId());
 			if(agg == null || agg.isEmpty()){
@@ -145,7 +145,7 @@ public class ConstituencyDataAccess {
 			Map<String, Long> data = new HashMap<>(); 				
 			resultSummary.put(constituency.getName().trim(), data);
 			
-			Map<String, Long> partyResult = (Map<String, Long>)resultSummary.get(constituency.getName());
+			Map<String, Long> partyResult = (Map<String, Long>)resultSummary.get(constituency.getName().trim());
 			List<Candidate> candidates = CandidateDataAccess.getCandidatesByConstituencyAndElectionType(constituency.getId(), ElectionType.HOUSE);
 			if(candidates == null || candidates.isEmpty()){
 				continue;

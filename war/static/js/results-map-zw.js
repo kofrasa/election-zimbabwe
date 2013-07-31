@@ -1318,7 +1318,9 @@ function loadFeatures(json, style, result) {
 				}
 				
 				cand = getTopCandidates(convertToCandidates(jsonData), 'votes', 24);
-				fillColor = (cand[0].votes && cand[0].votes > 0) ? cand[0].color : g.default_style.fillColor;
+				if (! (cand == null || cand.length < 1) ) {
+					fillColor = (cand[0].votes && cand[0].votes > 0) ? cand[0].color : g.default_style.fillColor;
+				}				
 								
 				// on click
 				google.maps.event.addListener(feature, 'click', function(e) {
@@ -1350,33 +1352,36 @@ function loadFeatures(json, style, result) {
 					currentFeature = null; 
 				});
 				
-				$body.bind( 'mousemove', moveTip );		
+				$body.bind( 'mousemove', moveTip );	
 				
-				if (params.contest === 'president') {				
-			 		if (!cand[0].vsAll) {
-			 			// no results
-			 			feature.set('fillColor', g.default_style.fillColor);
-			 			feature.set('fillOpacity', g.default_style.fillOpacity);
-			 		} else {		 		
-				 		var op = result[name][1];
-				 		var weight = op['REPORTED'] / op['TOTAL'];
-				 		op = cand[0].vsAll * weight;
-				 		op = (op < 0.03) ? 0.03 : op;
-				 		feature.set('fillColor', fillColor);
-				 		feature.set('fillOpacity', op);
-			 		}
-			 	} else {		
-			 		if (!cand[0].vsAll) {
-			 			feature.set('fillColor', g.default_style.fillColor);
-			 			feature.set('fillOpacity', g.default_style.fillOpacity);
-			 		} else {
-			 			var seats = presidentialResult[name][1]['TOTAL'];
-			 			var op = cand[0].votes / seats;
-			 			op = (op < 0.03) ? 0.03 : op;
-			 			feature.set('fillColor', fillColor);
-				 		feature.set('fillOpacity', op);
-			 		}	 		
-			 	}
+				if (! (cand == null || cand.length < 1) ) {
+					if (params.contest === 'president') {				
+				 		if (!cand[0].vsAll) {
+				 			// no results
+				 			feature.set('fillColor', g.default_style.fillColor);
+				 			feature.set('fillOpacity', g.default_style.fillOpacity);
+				 		} else {		 		
+					 		var op = result[name][1];
+					 		var weight = op['REPORTED'] / op['TOTAL'];
+					 		op = cand[0].vsAll * weight;
+					 		op = (op < 0.03) ? 0.03 : op;
+					 		feature.set('fillColor', fillColor);
+					 		feature.set('fillOpacity', op);
+				 		}
+				 	} else {		
+				 		if (!cand[0].vsAll) {
+				 			feature.set('fillColor', g.default_style.fillColor);
+				 			feature.set('fillOpacity', g.default_style.fillOpacity);
+				 		} else {
+				 			var seats = presidentialResult[name][1]['TOTAL'];
+				 			var op = cand[0].votes / seats;
+				 			op = (op < 0.03) ? 0.03 : op;
+				 			feature.set('fillColor', fillColor);
+					 		feature.set('fillOpacity', op);
+				 		}	 		
+				 	}
+				}
+				
 			}		
 			
 			feature.geojsonProperties["style"] = style;
