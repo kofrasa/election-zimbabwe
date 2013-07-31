@@ -1130,7 +1130,7 @@ function formatTip() {
 	var name = getName(currentFeature);
 	loadResult(scope, function (result) {
 		if (currentFeature != prevFeature) {
-			console("FTIP>>");
+			console.log("FTIP>>");
 			console.log(name);
 			if ( params.contest == 'president' ) {
 				result = result[name][0];		
