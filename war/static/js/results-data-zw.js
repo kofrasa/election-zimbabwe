@@ -397,7 +397,7 @@ var g = {
 					}
 				}
 			},
-			constituencies : ['Budiriro', 'Chitungwiza North', 'Chitungwiza South', 'Dzivaresekwa', 'Epworth', 'Glen Norah', 'Glen View South', 'Glenview North', 'Harare Central', 'Harare East', 'Harare North', 'Harare South', 'Harare West', 'Hatfield', 'Highfield East', 'Highfield West', 'Kambuzuma', 'Kuwadzana', 'Kuwadzana East', 'Mabvuku-Tafara', 'Mbare', 'Mt Pleasant', 'Mufakose', 'Southerton', "St Mary's", 'Sunningdale', 'Warren Park', 'Zengeza East', 'Zengeza West']
+			constituencies : ['Budiriro', 'Chitungwiza North', 'Chitungwiza South', 'Dzivaresekwa', 'Epworth', 'Glen Norah', 'Glenview South', 'Glenview North', 'Harare Central', 'Harare East', 'Harare North', 'Harare South', 'Harare West', 'Hatfield', 'Highfield East', 'Highfield West', 'Kambuzuma', 'Kuwadzana', 'Kuwadzana East', 'Mabvuku-Tafara', 'Mbare', 'Mt Pleasant', 'Mufakose', 'Southerton', "St Mary's", 'Sunningdale', 'Warren Park', 'Zengeza East', 'Zengeza West']
 		}
 	}
 };

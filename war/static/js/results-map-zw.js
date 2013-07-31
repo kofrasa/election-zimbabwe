@@ -1128,15 +1128,20 @@ function formatTip() {
 		scope = "constituency";
 	}
 	var name = getName(currentFeature);
+	var type = getType(currentFeature);
+	if (type !== g.current_level) return "";
+	
 	loadResult(scope, function (result) {
 		if (currentFeature != prevFeature) {
-			console.log("FTIP>>");
-			console.log(name);
+			console.log("BEGINTIP>>");			
 			if ( params.contest == 'president' ) {
+				console.log(name);
+				console.log(result);
 				result = result[name][0];		
 			} else {
 				result = result[name];
 			}		
+			console.log("ENDTIP>>");
 			candidates = getTopCandidates(convertToCandidates(result), 'votes', 24);
 			stats = result;
 		}
@@ -1173,16 +1178,14 @@ function moveTip( event ) {
 
 function showTip() {
 	
-	if( currentFeature !== null) {
+	if( g.current_level == getType(currentFeature)) {		
 		candidates = null;
 		tipHtml = formatTip();
 		$maptip.html( tipHtml ).show();
 		return true;
 	}
-	else {
-		$maptip.hide();
-		return false;
-	}
+	$maptip.hide();
+	return false;
 }
 
 var reloadTimer = {

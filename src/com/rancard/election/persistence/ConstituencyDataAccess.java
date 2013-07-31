@@ -100,7 +100,7 @@ public class ConstituencyDataAccess {
 			List<Map<String, Long>> data =  new ArrayList<Map<String, Long>>(); 
 			data.add(new HashMap<String, Long>());
 			data.add(new HashMap<String, Long>());
-			resultSummary.put(constituency.getName(), data);
+			resultSummary.put(constituency.getName().trim(), data);
 			
 			List<Candidate> candidates = CandidateDataAccess.getCandidatesByConstituencyAndElectionType(constituency.getId().longValue(), ElectionType.PRESIDENTIAL);
 			for(Candidate candidate: candidates){
@@ -129,7 +129,7 @@ public class ConstituencyDataAccess {
 
 		for(Constituency constituency: constituencies){					
 			Map<String, Long> data = new HashMap<>(); 				
-			resultSummary.put(constituency.getName(), data);
+			resultSummary.put(constituency.getName().trim(), data);
 			
 			Map<String, Long> partyResult = (Map<String, Long>)resultSummary.get(constituency.getName());
 			List<Candidate> candidates = CandidateDataAccess.getCandidatesByConstituencyAndElectionType(constituency.getId(), ElectionType.HOUSE);
