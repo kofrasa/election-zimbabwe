@@ -56,4 +56,8 @@ public class Ward {
 		return provinceName;
 	}
 
+	public Long getId() {
+		return id;
+	}
+
 }
