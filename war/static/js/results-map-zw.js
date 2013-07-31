@@ -221,10 +221,10 @@ document.write(
 );
 
 // NB: DO NOT REMOVE THIS.
-var presidentialResult = {"MATEBELELAND NORTH":[{"ZAPU":0,"ZANU-PF":0,"ZDP":0,"MDC":0,"MDC-T":0},{"REPORTED":0,"TOTAL":0}],"MIDLANDS":[{"ZAPU":0,"ZANU-PF":0,"ZDP":0,"MDC":0,"MDC-T":0},{"REPORTED":0,"TOTAL":0}],"MASHONALAND WEST":[{"ZAPU":0,"ZANU-PF":0,"ZDP":0,"MDC":0,"MDC-T":0},{"REPORTED":0,"TOTAL":0}],"MASHONALAND CENTRAL":[{"ZAPU":0,"ZANU-PF":0,"ZDP":0,"MDC":0,"MDC-T":0},{"REPORTED":0,"TOTAL":0}],"BULAWAYO":[{"ZAPU":0,"ZANU-PF":0,"ZDP":0,"MDC":0,"MDC-T":0},{"REPORTED":0,"TOTAL":0}],"MATEBELELAND SOUTH":[{"ZAPU":0,"ZANU-PF":0,"ZDP":0,"MDC":0,"MDC-T":0},{"REPORTED":0,"TOTAL":0}],"MASVINGO":[{"ZAPU":0,"ZANU-PF":0,"ZDP":0,"MDC":0,"MDC-T":0},{"REPORTED":0,"TOTAL":0}],"MASHONALAND EAST":[{"ZAPU":0,"ZANU-PF":0,"ZDP":0,"MDC":0,"MDC-T":0},{"REPORTED":0,"TOTAL":0}],"MANICALAND":[{"ZAPU":0,"ZANU-PF":0,"ZDP":0,"MDC":0,"MDC-T":0},{"REPORTED":0,"TOTAL":0}],"HARARE":[{"ZAPU":0,"ZANU-PF":0,"ZDP":0,"MDC":0,"MDC-T":0},{"REPORTED":0,"TOTAL":0}]}; 
+var presidentialResult = {"Matebeleland North":[{"ZAPU":0,"ZANU-PF":0,"ZDP":0,"MDC":0,"MDC-T":0},{"REPORTED":0,"TOTAL":0}],"Midlands":[{"ZAPU":0,"ZANU-PF":0,"ZDP":0,"MDC":0,"MDC-T":0},{"REPORTED":0,"TOTAL":0}],"Mashonaland West":[{"ZAPU":0,"ZANU-PF":0,"ZDP":0,"MDC":0,"MDC-T":0},{"REPORTED":0,"TOTAL":0}],"Mashonaland Central":[{"ZAPU":0,"ZANU-PF":0,"ZDP":0,"MDC":0,"MDC-T":0},{"REPORTED":0,"TOTAL":0}],"Bulawayo":[{"ZAPU":0,"ZANU-PF":0,"ZDP":0,"MDC":0,"MDC-T":0},{"REPORTED":0,"TOTAL":0}],"Matebeleland South":[{"ZAPU":0,"ZANU-PF":0,"ZDP":0,"MDC":0,"MDC-T":0},{"REPORTED":0,"TOTAL":0}],"MASVINGO":[{"ZAPU":0,"ZANU-PF":0,"ZDP":0,"MDC":0,"MDC-T":0},{"REPORTED":0,"TOTAL":0}],"Mashonaland East":[{"ZAPU":0,"ZANU-PF":0,"ZDP":0,"MDC":0,"MDC-T":0},{"REPORTED":0,"TOTAL":0}],"Manicaland":[{"ZAPU":0,"ZANU-PF":0,"ZDP":0,"MDC":0,"MDC-T":0},{"REPORTED":0,"TOTAL":0}],"Harare":[{"ZAPU":0,"ZANU-PF":0,"ZDP":0,"MDC":0,"MDC-T":0},{"REPORTED":0,"TOTAL":0}]}; 
 var presidentialConstituency = {"Gwanda North":[{"ZAPU":0,"ZANU-PF":0,"ZDP":0,"MDC":0,"MDC-T":0},{"REPORTED":0,"TOTAL":10}],"Bulilima West":[{"ZAPU":0,"ZANU-PF":0,"ZDP":0,"MDC":0,"MDC-T":0},{"REPORTED":0,"TOTAL":10}],"Insiza North":[{"ZAPU":0,"ZANU-PF":0,"ZDP":0,"MDC":0,"MDC-T":0},{"REPORTED":0,"TOTAL":10}],"Hwange West":[{"ZAPU":0,"ZANU-PF":0,"ZDP":0,"MDC":0,"MDC-T":0},{"REPORTED":0,"TOTAL":10}],"Nkayi North":[{"ZAPU":0,"ZANU-PF":0,"ZDP":0,"MDC":0,"MDC-T":0},{"REPORTED":0,"TOTAL":10}],"Beitbridge West":[{"ZDP":0,"MDC":500,"ZAPU":0,"Zanu-PF":30,"MDC-T":70},{"REPORTED":0,"TOTAL":10}],"Bulilima East":[{"ZAPU":0,"ZANU-PF":0,"ZDP":0,"MDC":0,"MDC-T":0},{"REPORTED":0,"TOTAL":10}],"Nkayi South":[{"ZAPU":0,"ZANU-PF":0,"ZDP":0,"MDC":0,"MDC-T":0},{"REPORTED":0,"TOTAL":10}],"Lupane East":[{"ZAPU":0,"ZANU-PF":0,"ZDP":0,"MDC":0,"MDC-T":0},{"REPORTED":0,"TOTAL":10}],"Hwange East":[{"ZAPU":0,"ZANU-PF":0,"ZDP":0,"MDC":0,"MDC-T":0},{"REPORTED":0,"TOTAL":10}],"Umguza":[{"ZAPU":0,"ZANU-PF":0,"ZDP":0,"MDC":0,"MDC-T":0},{"REPORTED":0,"TOTAL":10}],"Beitbridge East":[{"ZAPU":0,"ZANU-PF":0,"ZDP":0,"MDC":0,"MDC-T":0},{"REPORTED":0,"TOTAL":10}],"Binga North":[{"ZAPU":0,"ZANU-PF":0,"ZDP":0,"MDC":0,"MDC-T":0},{"REPORTED":0,"TOTAL":10}],"Gwanda Central":[{"ZAPU":0,"ZANU-PF":0,"ZDP":0,"MDC":0,"MDC-T":0},{"REPORTED":0,"TOTAL":10}],"Bubi":[{"ZAPU":0,"ZANU-PF":0,"ZDP":0,"MDC":0,"MDC-T":0},{"REPORTED":0,"TOTAL":10}],"Umzingwane":[{"ZAPU":0,"ZANU-PF":0,"ZDP":0,"MDC":0,"MDC-T":0},{"REPORTED":0,"TOTAL":10}],"Matobo North":[{"ZAPU":0,"ZANU-PF":0,"ZDP":0,"MDC":0,"MDC-T":0},{"REPORTED":0,"TOTAL":10}],"Tsholotsho North":[{"ZAPU":0,"ZANU-PF":0,"ZDP":0,"MDC":0,"MDC-T":0},{"REPORTED":0,"TOTAL":10}],"Gwanda South":[{"ZAPU":0,"ZANU-PF":0,"ZDP":0,"MDC":0,"MDC-T":0},{"REPORTED":0,"TOTAL":10}],"Lupane West":[{"ZAPU":0,"ZANU-PF":0,"ZDP":0,"MDC":0,"MDC-T":0},{"REPORTED":0,"TOTAL":10}],"Hwange Central":[{"ZAPU":0,"ZANU-PF":0,"ZDP":0,"MDC":0,"MDC-T":0},{"REPORTED":0,"TOTAL":10}],"Tsholotsho South":[{"ZAPU":0,"ZANU-PF":0,"ZDP":0,"MDC":0,"MDC-T":0},{"REPORTED":0,"TOTAL":10}],"Mangwe":[{"ZAPU":0,"ZANU-PF":0,"ZDP":0,"MDC":0,"MDC-T":0},{"REPORTED":0,"TOTAL":10}],"Binga South":[{"ZAPU":0,"ZANU-PF":0,"ZDP":0,"MDC":0,"MDC-T":0},{"REPORTED":0,"TOTAL":10}],"Insiza South":[{"ZAPU":0,"ZANU-PF":0,"ZDP":0,"MDC":0,"MDC-T":0},{"REPORTED":0,"TOTAL":10}],"Matobo South":[{"ZAPU":0,"ZANU-PF":0,"ZDP":0,"MDC":0,"MDC-T":0},{"REPORTED":0,"TOTAL":10}]}; 
-var paliamentaryResult = {"MATEBELELAND NORTH":{"ZAPU":0,"ZANU-PF":0,"ZDP":0,"MDC":0,"MDC-T":0},"MIDLANDS":{"ZAPU":0,"ZANU-PF":0,"ZDP":0,"MDC":0,"MDC-T":0},"MASHONALAND WEST":{"ZAPU":0,"ZANU-PF":0,"ZDP":0,"MDC":0,"MDC-T":0},"MASHONALAND CENTRAL":{"ZAPU":0,"ZANU-PF":0,"ZDP":0,"MDC":0,"MDC-T":0},"BULAWAYO":{"ZAPU":0,"ZANU-PF":0,"ZDP":0,"MDC":0,"MDC-T":0},"MATEBELELAND SOUTH":{"ZAPU":0,"ZANU-PF":0,"ZDP":0,"MDC":0,"MDC-T":0},"MASVINGO":{"ZAPU":0,"ZANU-PF":0,"ZDP":0,"MDC":0,"MDC-T":0},"MASHONALAND EAST":{"ZAPU":0,"ZANU-PF":0,"ZDP":0,"MDC":0,"MDC-T":0},"MANICALAND":{"ZAPU":0,"ZANU-PF":0,"ZDP":0,"MDC":0,"MDC-T":0},"HARARE":{"ZAPU":0,"ZANU-PF":0,"ZDP":0,"MDC":0,"MDC-T":0}};
-var parliamentaryConstituency = {"MATEBELELAND NORTH":{"ZAPU":0,"ZANU-PF":0,"ZDP":0,"MDC":0,"MDC-T":0},"MIDLANDS":{"ZAPU":0,"ZANU-PF":0,"ZDP":0,"MDC":0,"MDC-T":0},"MASHONALAND WEST":{"ZAPU":0,"ZANU-PF":0,"ZDP":0,"MDC":0,"MDC-T":0},"MASHONALAND CENTRAL":{"ZAPU":0,"ZANU-PF":0,"ZDP":0,"MDC":0,"MDC-T":0},"BULAWAYO":{"ZAPU":0,"ZANU-PF":0,"ZDP":0,"MDC":0,"MDC-T":0},"MATEBELELAND SOUTH":{"ZAPU":0,"ZANU-PF":0,"ZDP":0,"MDC":0,"MDC-T":0},"MASVINGO":{"ZAPU":0,"ZANU-PF":0,"ZDP":0,"MDC":0,"MDC-T":0},"MASHONALAND EAST":{"ZAPU":0,"ZANU-PF":0,"ZDP":0,"MDC":0,"MDC-T":0},"MANICALAND":{"ZAPU":0,"ZANU-PF":0,"ZDP":0,"MDC":0,"MDC-T":0},"HARARE":{"ZAPU":0,"ZANU-PF":0,"ZDP":0,"MDC":0,"MDC-T":0}};
+var paliamentaryResult = {"Matebeleland North":{"ZAPU":0,"ZANU-PF":0,"ZDP":0,"MDC":0,"MDC-T":0},"Midlands":{"ZAPU":0,"ZANU-PF":0,"ZDP":0,"MDC":0,"MDC-T":0},"Mashonaland West":{"ZAPU":0,"ZANU-PF":0,"ZDP":0,"MDC":0,"MDC-T":0},"Mashonaland Central":{"ZAPU":0,"ZANU-PF":0,"ZDP":0,"MDC":0,"MDC-T":0},"Bulawayo":{"ZAPU":0,"ZANU-PF":0,"ZDP":0,"MDC":0,"MDC-T":0},"Matebeleland South":{"ZAPU":0,"ZANU-PF":0,"ZDP":0,"MDC":0,"MDC-T":0},"MASVINGO":{"ZAPU":0,"ZANU-PF":0,"ZDP":0,"MDC":0,"MDC-T":0},"Mashonaland East":{"ZAPU":0,"ZANU-PF":0,"ZDP":0,"MDC":0,"MDC-T":0},"Manicaland":{"ZAPU":0,"ZANU-PF":0,"ZDP":0,"MDC":0,"MDC-T":0},"Harare":{"ZAPU":0,"ZANU-PF":0,"ZDP":0,"MDC":0,"MDC-T":0}};
+var parliamentaryConstituency = {"Matebeleland North":{"ZAPU":0,"ZANU-PF":0,"ZDP":0,"MDC":0,"MDC-T":0},"Midlands":{"ZAPU":0,"ZANU-PF":0,"ZDP":0,"MDC":0,"MDC-T":0},"Mashonaland West":{"ZAPU":0,"ZANU-PF":0,"ZDP":0,"MDC":0,"MDC-T":0},"Mashonaland Central":{"ZAPU":0,"ZANU-PF":0,"ZDP":0,"MDC":0,"MDC-T":0},"Bulawayo":{"ZAPU":0,"ZANU-PF":0,"ZDP":0,"MDC":0,"MDC-T":0},"Matebeleland South":{"ZAPU":0,"ZANU-PF":0,"ZDP":0,"MDC":0,"MDC-T":0},"MASVINGO":{"ZAPU":0,"ZANU-PF":0,"ZDP":0,"MDC":0,"MDC-T":0},"Mashonaland East":{"ZAPU":0,"ZANU-PF":0,"ZDP":0,"MDC":0,"MDC-T":0},"Manicaland":{"ZAPU":0,"ZANU-PF":0,"ZDP":0,"MDC":0,"MDC-T":0},"Harare":{"ZAPU":0,"ZANU-PF":0,"ZDP":0,"MDC":0,"MDC-T":0}};
 //{"BIMBILLA":{"NDC":[0,"ALHAJI MOHAMMED IBN ABASS"],"NPP":[0,"NTIWILL BINGAB ADONA DOMINIC"],"PPP":[0,"IDDISAH ZAHARATU"],"CPP":[0,"ALHASSAN SOMED DASANA"],"DPP":[0,"RASHID ABDUL"],"NDP":[0,"ABDUL HAFIZ IMORO"],"INDP":[0,"MOHAMMED SADICK"]},"BOLE/BAMBOI":{"NDC":[0,"JOSEPH AKATI SAAKA"],"NPP":[0,"SULEMANA ADAMS ACHANSO"],"PPP":[0,"JAJA EMMANUEL DAPAA"],"NDP":[0,"LIGBOULI GEORGE ROY"],"UFP":[0,"MANYIMA IDDRISU"]},"BUNKPURUGU":{"NDC":[0,"DUUT BONCHEL ABDULAI"],"NPP":[0,"SOLOMON NAMLIIT BOAR"],"IPP":[0,"DUUT BANAM TATUKA"],"INDP":[0,"LABIK JOSEPH YAANI"]},"CHEREPONI":{"NDC":[0,"SAMUEL ABDULAI"],"NPP":[0,"AZUMAH NAMORO SANDA"],"PPP":[0,"MOHAMMED HAMZA"],"CPP":[0,"REBECCA NAMANA JABARI"],"NDP":[0,"ALHASSAN ALIWU"]},"DABOYA / MANKARIGU":{"NDC":[0,"BAANI ABUDU NELSON"],"NPP":[0,"TIKA SAMUEL YEYU"],"PPP":[0,"MOHAMMED SULEMANA"],"PNC":[0,"HAMZA A MUGIS"],"CPP":[0,"ALIDU MAHAMA"],"NDP":[0,"ALHASSAN SAMMED SUALISU"]},"DAMONGO":{"NDC":[9718,"ADAM MUTAWAKILU"],"NPP":[7041,"ALBERT KASSIM DIWURA"],"CPP":[60,"FORGOR ABUBAKAR"],"PNC":[61,"LIMAANE SEIDU IBRAHIM"],"NDP":[80,"ABDUL AZIZ SHIRAZ"]},"GUSHEGU":{"NDC":[0,"THOMAS KWESI NASAH"],"NPP":[0,"RITA TANI IDDI"],"PPP":[0,"MAHAMA BABA"],"UFP":[0,"MANYIMAN BABA"]},"KARAGA":{"NDC":[0,"ALHASSAN SUALIHU DANDAAWA"],"NPP":[0,"BABA WAHAB"],"PPP":[0,"FUSHEINI ZIBLIM YAKUBU (AGYEKUM)"],"PNC":[0,"ADAM YUSSIF"],"INDP":[0,"ABDULAI MAHAMADU SANDOW"]},"KPANDAI":{"NDC":[0,"LIKPALIMOR KWAJO TAWIAH"],"NPP":[0,"MATTHEW NYINDAM"],"PPP":[0,"MBOKO NKRAJIMAMO YAW"],"CPP":[0,"BUMARCK BRAIMAH FRIKO"],"NDP":[0,"ANIWABA KWAKU BEDIAKO JEREMIAH"],"INDP":[0,"ALFRED DONKOR ODZIDZATOR"]},"KUMBUNGU":{"NDC":[0,"MOHAMMED MUMUNI"],"NPP":[0,"ABDULAI MOHAMMED SAANI"],"PPP":[0,"ALHASSAN ABUBAKAR"],"CPP":[0,"AMADU MOSES YAHAYA"],"NDP":[0,"IMORO ISSAHAKU"]},"MION":{"NDC":[0,"HON DR ALHASSAN AHMED YAKUBU"],"NPP":[0,"ALHASSAN SHAIBU"],"INDP":[0,"ALHAJI ALABIRA IBRAHIM"],"CPP":[0,"MAKAMBA DANIEL TAMANJA"],"NDP":[0,"IDDRISU RASHAD KPABIYI"],"INDP":[0,"JABAB DANIEL ULENBI"]},"NALERIGU/ GAMBAGA":{"NDC":[0,"HON. DR. TIA SUGRI ALFRED"],"NPP":[0,"PETER WUNI"],"PPP":[0,"HAMIDU NAPOLEON DAWUNI"],"CPP":[0,"ABDULAI ISSIFU JOSEPH"]},"NANTON":{"NDC":[0,"IBRAHAM MURITALA MUHAMMED"],"NPP":[0,"ALHAJI ABDU- KAREEM IDDRISU"],"PPP":[0,"IDDI ALHASSAN SHITOBU"]},"SABOBA":{"NDC":[0,"BUKARI NIKPE JOSEPH"],"NPP":[0,"BINIPOM CHARLES BINTIN"],"PPP":[0,"GABULJA JOHN KINYORBAAN"]},"SAGNARIGU":{"NDC":[0,"ALHASSAN BASHIR FUSENI"],"NPP":[0,"YAJUBU ABDUL-KAREEM"],"PPP":[0,"ABDUL JAMALDEEN"],"CPP":[0,"ALHASSAN A SUHUYINI"]},"SALAGA NORTH":{"NDC":[0,"ALHASSAN MUMUNI"],"NPP":[0,"MOHAMMED KAMARUNDEEN"],"INDP":[0,"ABDUL- FATAW ABDUL- WAHAB"]},"SAVELUGU":{"NDC":[0,"MARY SALIFU"],"NPP":[0,"MUHAMMED ABDUL-SAMED"],"PPP":[0,"MUNIRU HARDI"],"PNC":[0,"MAHAMA IDDRISU"],"CPP":[0,"MUSAH OSMAN"]},"SALAGA SOUTH":{"NDC":[0,"HON. ALHAJI IBRAHIM DEY ABUBAKARI"],"NPP":[0,"ABU-BAKAR SADDIQUE BONIFACE"],"PPP":[0,"JANDA YAHUZU MAHAMA"],"PNC":[0,"MUNTARI ABDUL JALILU"],"NDP":[0,"LAMINU ZAKARI"]},"SAWLA TUNA KALBA":{"NDC":[0,"DONALD DARI SODITEY"],"NPP":[0,"JOSEPH NONGIRI NAAH VUGU"],"PPP":[0,"SEIDU KIPO BENJAMIN"],"PNC":[0,"YAAPO KWABENA EDWARD"],"NDP":[0,"JOSEPH TRUMAH BAYEL"]},"TAMALE CENTRAL":{"NDC":[0,"INUSAH FUSENI"],"NPP":[0,"IDDRISI MUSAH"],"PPP":[0,"ADAM MARIAMA"],"PNC":[0,"SALIFU IDDRISU"],"CPP":[0,"HARUNA IDDRISU"],"NDP":[0,"ABDUL RASHAS MAMDUHU"],"DPP":[0,"AMIDU ARAMATA"],"INDP":[0,"MAHATA SETH SAYIBU"],"INDP":[0,"ABDUL-AMINU IBRAHIM"]},"TAMALE NORTH":{"NDC":[0,"ABUBAJARI SUMANI"],"NPP":[0,"ALIKU SAYIBU"],"PPP":[0,"IDDRISU MASHD"],"PNC":[0,"SEIDU ABDULAI NAPODOO"],"CPP":[0,"FAIZ AOUNI MOUTRAGE"],"INDP1":[0,"ADAM GAMEL NASSER"],"INDP2":[0,"ISSAH AHMED"],"INDP3":[0,"ALHASSAN DAHAMANI"]},"TAMALE SOUTH":{"NDC":[0,"IDDRISU HARUNA"],"NPP":[0,"ABDALLAH PEGU SHAMSUDEEN"],"PPP":[0,"MOHAMMED ABDUL-KARIM"],"PNC":[0,"ALIDU MOHAMMED NASIR-DEEN"],"CPP":[0,"ABDUL RAHMAN"],"NDP":[0,"SEIDU UMAR FAROUK"],"DPP":[0,"IBRAHIM MARIAM"]},"TATALE / SANGULI":{"NDC":[0,"JAGRI MOHAMMED"],"NPP":[0,"JAMES C YANWUBE"],"CPP":[0,"TISERE JOHN"],"INDP":[0,"THOMAS BREMPONG LAREN"]},"TOLON":{"NPP":[18113,"WAHAB SUHIYNI WUMBEI"],"PPP":[398,"ZIBLILA BABA ISSFU"],"CPP":[361,"ALAHASSAN ADAM DAMBA"],"NDP":[568,"MAHAMADU IBRAHIM"],"INDP":[2478,"KASS ABDUL-LATIF TUAHIR"],"NDC":[1569,"ABDUL -RAZAQ A UMAR"]},"WALWALE":{"NDC":[0,"AZORTIBAH JAMES"],"NPP":[0,"SAGRE BAMBANGI"],"PPP":[0,"BAGMARIGU SIMON"],"PNC":[0,"ABDALLAHH ABUBAKAR"],"NDP":[0,"SOALISU AHAIBU"]},"WULENSI":{"NDC":[0,"LALIRI GEORGE MABAN"],"NPP":[0,"THOMAS DONKOR OGAJAH"],"PPP":[0,"ISSAH DAMBA"],"CPP":[0,"HARUNA MUSAH"],"INDP1":[0,"MOHAMMED ADAM"],"INDP2":[0,"NLENKIBA ABRAHAM NJONAAN"]},"YAGABA/KUBORI":{"NDC":[0,"IBRAHIM ABDUL RAUF TANKO"],"NPP":[0,"USSIF MUSTAPHA"]},"YAPEI- KUSAWGU":{"NDC":[0,"AMADU SEIDU"],"NPP":[0,"ZAKARIAH YAKUBU"],"PPP":[0,"ABUKARI ADAM MUSAH"],"NDP":[0,"IDDRISU IBRAHIM"]},"YENDI":{"NDC":[0,"IDDRISU SULEMANA IBUN"],"NPP":[0,"MOHAMMED HABIBU TIJANI"],"PPP":[0,"M A YUSSIF NAMBILI"],"NDP":[0,"ABUBAKARI SADIK MAJEED"],"INDP":[0,"ABUKARI MOHAMMED MAHAMOUD"],"INDP":[0,"ABDUL- RAHMAN M MAWONG GBANDE"],"INDP":[0,"SHANI MOHAMMED KAMIL"]},"YUNYOO":{"NDC":[9591,"NAABU JOSEPH BIPOBA"],"NPP":[4318,"ALHASSAN JOHN"],"PPP":[777,"WALIBE AMOS"]},"ZABZUGU":{"NDC":[0,"ALHGASSAN UMAR"],"NPP":[0,"JABAAH JOHN BENNAM"],"PPP":[0,"ADAM AZIMA"],"INDP":[0,"ABDULAI DRAMANI"]}};
 var wardResult = {"20":{"Prince and Princess Pre-School":{},"Mgoqo Primary School B":{},"Nkulumane Library ":{},"Mgoqo Primary School A":{},"Nkulumane 2 Secondary School ":{},"Zesa Office ":{},"Nkulumane 12 Terminus ":{},"Nkulumane Engen Garage":{},"Nkulumane 15 Emasimini":{}},"23":{"Mgombane Primary School A":{},"Queen Elizabeth Primary School A":{},"Nkulumane 12 Entabeni ":{},"Mgombane Primary School B":{},"Queen Elizabeth Primary School B":{},"Nkulumane 10 Bus Terminus ":{},"Nkulumane 10 Water Reservour ":{}},"22":{"Mafela Primary School A":{},"The Salvation Army":{},"Amaveni Primary School B":{},"Amaveni Primary School A":{},"Mtshane Primary School B":{},"Mafela Primary School B":{},"Mtshane Primary School A":{},"Mandwandwe Secondary School A":{},"Nkulumane Hall A":{},"Mandwandwe Secondary School B":{},"Nkulumane Hall B":{},"Sigombe Primary School B":{},"One -Way ":{},"Bretheren in Christ ":{},"Sigombe Primary School A":{}}};
 
@@ -438,7 +438,7 @@ function contentTable() {
 			
 			'</div>',
 			'<div style="width:100%;">',
-			'<a id="zoom-btn" class="button disable">Go Back</a>',
+			'<a id="zoom-btn" class="button disable">Overview</a>',
 				'<div id="map" style="width:100%; height:100%;">',
 				'</div>',
 			'</div>',
@@ -516,7 +516,7 @@ function renderConstituencyWards( result ) {
 				'</div>',
 			'</div>',
 			'<div id="subregion">',
-			'<div style="clear:both;padding-left:15px;font-weight:bold;">Wards</div>',
+			'<div style="clear:both;padding-left:15px;font-weight:bold;" class="active-region">Wards</div>',
 			'<div id="subregion_list">'
 	);
 	
@@ -540,6 +540,7 @@ function initWardEvents( region, result ) {
 			return;
 		}		
 		$(".ward-list").hide();
+		$("#subregion").children().first().html("Go to Wards");
 		renderPollingStations( $ward.data("num") );
 	});
 	
@@ -547,8 +548,6 @@ function initWardEvents( region, result ) {
 		var wardResult = result[wardNumber];
 		var names = [];
 		var state = {};
-		console.log("WARD>>");
-		console.log(wardResult);
 		for (var k in wardResult) {
 			var temp = 0;
 			for (var q in wardResult[k]) {
@@ -584,25 +583,25 @@ function initWardEvents( region, result ) {
 			}
 			contentString = S(contentString, '<li class="',state[names[i]],'">',names[i],'</li>');
 		}
-		contentString = S(constentString,  "</div>");
+		contentString = S(contentString,  "</div>");
 		
 		$("#subregion_list").append(contentString);
+		$('#subregion_list ul:last').css('border','none');
 		
 		// render results
-//		$("#subregion_list li").on('click', function (e) {
 		$(".polling-list li").on('click', function (e) {
 			
 			var $sidebar = $('<ul></ul>');
-			var items = $("#subregion li");	
-
-			$.each(items, function (key,value) {
+			var $currentItem = $(this);
+			
+			$(".polling-list li").each(function (index, value) {
 				$sidebar.append(value);
 				$(value).off('click').on('click', function (e) {
 					var $value = $(this);
-					$("#subregion li").removeClass('selected-region');
+					$(".polling-list li").removeClass('selected-region');
 					$value.addClass('selected-region');	
 					
-					var $result_div = $('#constituency_result_div').empty().hide();				
+					var $result_div = $('#polling-station-result').empty().hide();				
 					var content;
 					if (params.contest === 'president') {
 						var candidates = getTopCandidates(convertToCandidates(wardResult[$value.text()]), 'votes', 24);					
@@ -634,9 +633,9 @@ function initWardEvents( region, result ) {
 				'border':'thin outset #ccc', 'margin-left':'10px','float':'left','display':'inline-block'});		
 			
 			// replace subregion content
-			$('#subregion_list').html($sidebar)
-				.append('<div id="constituency_result_div" style="float:left"></div>')
-				.append('<div style="clear:both"></div>');
+			$('.polling-list').html($sidebar)
+				.append('<div id="polling-station-result" style="float:left"></div>')
+				.append('<div style="clear:both"></div>');						
 			
 			var padding = 200; // total padding
 			$sidebar.animate({scrollTop: $currentItem.offset().top-padding},'slow');
@@ -1195,92 +1194,6 @@ var reloadTimer = {
 		opt.reloadTime = false;
 	}
 };
-//
-//function loadFeatures( result ) {
-//	clearFeatures();
-//	// load once
-//	$("#candidate-total").html(formatCandidatesTotal( result ));
-//	
-//	if(!feature_collection){
-//		feature_collection = new GeoJSON( geojson, default_style );
-//	}
-//	
-//	var feature, cand, color, region, jsonData;
-//
-//	for (var i=0; i < feature_collection.length; i++) {
-//		feature = feature_collection[i]
-//		region = feature.geojsonProperties.ID.toUpperCase();
-//		jsonData = params.contest === 'president'? result[region][0] : result[region]; 		
-//		cand = getTopCandidates(convertToCandidates(jsonData), 'votes', 24);
-//		color = (cand[0].votes && cand[0].votes > 0) ? cand[0].color : default_style.fillColor;
-//		
-//		// on click			
-//		google.maps.event.addListener(feature, 'click', function (e) {		
-//			formatCandidatesConstituency();
-//	 	});
-//		
-//		// on mouseover
-//	 	google.maps.event.addListener(feature, 'mouseover', function (e) {
-//	 		// use 'this' to access regions	
-//	 		prevFeature = currentFeature;
-//			currentFeature = this;
-//			moveTip(e);
-//	 	});
-//
-//		// on mouseout
-//	 	google.maps.event.addListener(feature, 'mouseout', function (e) {
-//	 		// use 'this' to access regions
-//	 		currentFeature = null; 		
-//	 	});	
-//	 	
-//	 	$body.bind( 'mousemove', moveTip );
-//	 		 	
-//	 	if (params.contest === 'president') {
-//	 		if (!cand[0].vsAll) {
-//	 			// no results
-//	 			feature.set('fillColor', default_style.fillColor);
-//	 			feature.set('fillOpacity', default_style.fillOpacity);
-//	 		} else {		 		
-//		 		var op = result[region][1];
-//		 		var weight = op['REPORTED'] / op['TOTAL'];
-//		 		op = cand[0].vsAll * weight;
-//		 		op = (op < 0.03) ? 0.03 : op;
-//		 		feature.set('fillColor', color);
-//		 		feature.set('fillOpacity', op);
-//	 		}
-//	 	} else {		
-//	 		if (!cand[0].vsAll) {
-//	 			feature.set('fillColor', default_style.fillColor);
-//	 			feature.set('fillOpacity', default_style.fillOpacity);
-//	 		} else {
-//	 			var seats = presidentialResult[region][1]['TOTAL'];
-//	 			var op = cand[0].votes / seats;
-//	 			op = (op < 0.03) ? 0.03 : op;
-//	 			feature.set('fillColor', color);
-//		 		feature.set('fillOpacity', op);
-//	 		}	 		
-//	 	}
-//	 	feature.setMap(map);	
-//	}
-//	
-//	initSelectors();
-//	reloadTimer.set( function () {
-//		resultCache = {}; // clear cache
-//		loadView();
-//	}, opt.reloadTime );
-//}
-
-//function clearFeatures(){
-//	if(feature_collection) {
-//		var feature;
-//		for(var i = 0; i< feature_collection.length; i++){
-//			feature = feature_collection[i];
-//			google.maps.event.clearInstanceListeners(feature);
-//			feature.setMap(null);			
-//		}
-//	}
-//	$body.unbind();
-//}
 
 function loadView() {
 	reloadTimer.clear();
@@ -1394,11 +1307,11 @@ function loadFeatures(json, style, result) {
 				google.maps.event.addListener(feature, 'click', function(e) {
 					if (type == "provincial") {
 						// load constituency
-						g.current_province = region;						
-						geo = g.provinceData[region].geometry;
+						g.current_province = name;						
+						geo = g.provinceData[name].geometry;
 						zoomIn();
 					} else if (type == "constituency") {
-						g.current_constituency = region;
+						g.current_constituency = name;
 						formatCandidatesConstituency();
 					}
 				});
@@ -1440,7 +1353,7 @@ function loadFeatures(json, style, result) {
 			 			feature.set('fillColor', g.default_style.fillColor);
 			 			feature.set('fillOpacity', g.default_style.fillOpacity);
 			 		} else {
-			 			var seats = presidentialResult[region][1]['TOTAL'];
+			 			var seats = presidentialResult[name][1]['TOTAL'];
 			 			var op = cand[0].votes / seats;
 			 			op = (op < 0.03) ? 0.03 : op;
 			 			feature.set('fillColor', fillColor);
@@ -1450,7 +1363,7 @@ function loadFeatures(json, style, result) {
 			}		
 			
 			feature.geojsonProperties["style"] = style;
-			feature.geojsonProperties['ID'] = region;
+//			feature.geojsonProperties['ID'] = region;
 			feature.setMap(map);
 			g.featureArray.push(feature);						
 
@@ -1744,7 +1657,9 @@ loadView();
 $window.bind( 'resize', resizeViewOnly );
 
 //start loading constituency shapes
-var tm = setTimeout(function () {
+scheduleProcess(function () {
+	return Cache.has("provincial");
+}, function () {
 	for (var key in g.provinceData) {
 		_.each(g.provinceData[key].constituencies, function (c) {
 			var timer = setTimeout(function () {
@@ -1755,8 +1670,7 @@ var tm = setTimeout(function () {
 			}, 50);
 		});
 	}
-	clearTimeout(tm);
-}, 2000);
+}, 1000);
 
 
 //getScript( S(

@@ -19,7 +19,7 @@ var params = parseQuery(location.search);
 
 var opt = opt || {};
 
-opt.debug = true;
+opt.debug = false;
 
 opt.writeScript = function( url, nocache ) {
 	document.write(

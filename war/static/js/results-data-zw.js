@@ -1,6 +1,6 @@
 var candidatesInfo = {
 	"ZAPU" : {
-		color : '#FF0000',
+		color : '#8A5C2E',
 		firstName : 'Dumiso',
 		lastName : 'Dabengwa',
 		fullName : 'Dumiso Dabengwa'
@@ -12,19 +12,19 @@ var candidatesInfo = {
 		fullName : 'Robert Mugabe'
 	},
 	"ZDP" : {
-		color : '#E4Af95',
+		color : '#E4E495',
 		firstName : 'Kisinoti',
 		lastName : 'Mukwazhe',
 		fullName : 'Kisinoti Mukwazhe'
 	},
 	"MDC" : {
-		color : '#20FF1F',
+		color : '#20FF20',
 		firstName : 'Welshman',
 		lastName : 'Ncube',
 		fullName : 'Welshman Ncube'
 	},
 	"MDC-T" : {
-		color : '#8A5C2E',
+		color : '#FF0000',
 		firstName : 'Morgan',
 		lastName : 'Tsvangirai',
 		fullName : 'Morgan Tsvangirai'
@@ -79,6 +79,7 @@ var g = {
 	current_level : "provincial",
 	region: null,
 	jsonLoaded : {
+		province: false,
 		consituency : false,
 		ward : false
 	},
@@ -88,7 +89,7 @@ var g = {
 		"wards" : 500
 	},
 	provinceData : {
-		MATEBELELAND_NORTH : {
+		"Matebeleland North" : {
 			color : "#996699",
 			"geometry" : {
 				"bounds" : {
@@ -119,7 +120,7 @@ var g = {
 			},
 			constituencies : ['Binga North', 'Binga South', 'Bubi', 'Hwange Central', 'Hwange East', 'Hwange West', 'Lupane East', 'Lupane West', 'Nkayi North', 'Nkayi South', 'Tsholotsho North', 'Tsholotsho South', 'Umguza']
 		},
-		MIDLANDS : {
+		"Midlands" : {
 			color : "#FFCCFF",
 			"geometry" : {
 				"bounds" : {
@@ -150,7 +151,7 @@ var g = {
 			},
 			constituencies : ['Chirumhanzu-Zibagwe', 'Chirumhanzu', 'Chiwundura', 'Gokwe-Chireya', 'Gokwe-Nembudziya', 'Gokwe-Sengwa', 'Gokwe-Sesame', 'Gokwe', 'Gokwe-Gumunyu', 'Gokwe-Kabuyuni', 'Gokwe Kana', 'Gokwe Mapfungautsi', 'Gweru Urban', 'Kwekwe Central', 'Mberengwa East', 'Mberengwa North', 'Mberengwa South', 'Mberengwa West', 'Mbizo', 'Mkoba', 'Redcliff', 'Shurugwi North', 'Shurugwi South', 'Silobela', 'Vungu', 'Zhombe', 'Zvishavane Ngezi', 'Zvishavane Runde']
 		},
-		MASHONALAND_WEST : {
+		"Mashonaland West" : {
 			color : "#D8BFD8",
 			"geometry" : {
 				"bounds" : {
@@ -181,7 +182,7 @@ var g = {
 			},
 			constituencies : ['Chakari', 'Chegutu East', 'Chegutu West', 'Chinhoyi', 'Hurungwe Central', 'Hurungwe East', 'Hurungwe North', 'Hurungwe West', 'Kadoma Central', 'Kariba', 'Magunje', 'Makonde', 'Mhangura', 'Mhondoro-Mubhaira', 'Mhondoro-Ngezi', 'Muzvezve', 'Norton', 'Sanyati', 'Zvimba East', 'Zvimba North', 'Zvimba South', 'Zvimba West']
 		},
-		MASHONALAND_CENTRAL : {
+		"Mashonaland Central" : {
 			color : "#F8E5E5",
 			"geometry" : {
 				"bounds" : {
@@ -212,7 +213,7 @@ var g = {
 			},
 			constituencies : ['Bindura North', 'Bindura South', 'Guruve North', 'Guruve South', 'Mazowe Central', 'Mazowe North', 'Mazowe South', 'Mazowe West', 'Mbire', 'Mt Darwin East', 'Mt Darwin North', 'Mt Darwin South', 'Mt Darwin West', 'Muzarabani North', 'Muzarabani South', 'Rushinga', 'Shamva North', 'Shamva South']
 		},
-		BULAWAYO : {
+		"Bulawayo" : {
 			color : "#0FF5EE",
 			"geometry" : {
 				"bounds" : {
@@ -243,7 +244,7 @@ var g = {
 			},
 			constituencies : ['Bulawayo Central', 'Bulawayo East', 'Bulawayo South', 'Emakhandeni-Entumbane', 'Lobengula', 'Luveve', 'Magwegwe', 'Makokoba', 'Nketa', 'Nkulumane', 'Pelandaba-Mpopoma', 'Pumula']
 		},
-		MATEBELELAND_SOUTH : {
+		"Matabeleland South" : {
 			color : "#FFE4E1",
 			"geometry" : {
 				"bounds" : {
@@ -274,7 +275,7 @@ var g = {
 			},
 			constituencies : [ 'Beitbridge East', 'Beitbridge West', 'Bulilima East', 'Bulilima West', 'Gwanda Central', 'Gwanda North', 'Gwanda South', 'Insiza North', 'Insiza South', 'Mangwe', 'Matobo North', 'Matobo South', 'Umzingwane' ]
 		},
-		MASVINGO : {
+		"Masvingo" : {
 			color : "#B0C4DE",
 			"geometry" : {
 	            "bounds" : {
@@ -305,7 +306,7 @@ var g = {
 	         },
 			constituencies : ['Bikita East', 'Bikita South', 'Bikita West', 'Chiredzi East', 'Chiredzi North', 'Chiredzi South', 'Chiredzi West', 'Chivi Central', 'Chivi North', 'Chivi South', 'Gutu Central', 'Gutu East', 'Gutu North', 'Gutu South', 'Gutu West', 'Masvingo Central', 'Masvingo North', 'Masvingo South', 'Masvingo Urban', 'Masvingo West', 'Mwenezi East', 'Mwenezi West', 'Zaka Central', 'Zaka East', 'Zaka North', 'Zaka West']
 		},
-		MASHONALAND_EAST : {
+		"Mashonaland East" : {
 			color : "#E0FFFF",
 			"geometry" : {
 				"bounds" : {
@@ -336,7 +337,7 @@ var g = {
 			},
 			constituencies : ['Chikomba Central', 'Chikomba East', 'Chikomba West', 'Goromonzi North', 'Goromonzi South', 'Goromonzi West', 'Maramba-Pfungwe', 'Marondera Central', 'Marondera East', 'Marondera West', 'Mudzi North', 'Mudzi South', 'Mudzi West', 'Murehwa North', 'Murehwa South', 'Murehwa West', 'Mutoko East', 'Mutoko North', 'Mutoko South', 'Seke', 'Uzumba', 'Wedza North', 'Wedza South']
 		},
-		MANICALAND : {
+		"Manicaland" : {
 			color : "#B8860B",
 			"geometry" : {
 				"bounds" : {
@@ -367,7 +368,7 @@ var g = {
 			},
 			constituencies : ['Buhera Central', 'Buhera North', 'Buhera South', 'Buhera West', 'Chimanimani East', 'Chimanimani West', 'Chipinge Central', 'Chipinge East', 'Chipinge South', 'Chipinge West', 'Dangamvura-Chikanga', 'Headlands', 'Makoni Central', 'Makoni North', 'Makoni South', 'Makoni West', 'Musikavanhu', 'Mutare Central', 'Mutare North', 'Mutare South', 'Mutare West', 'Mutasa Central', 'Mutasa North', 'Mutasa South', 'Nyanga North', 'Nyanga South']
 		},
-		HARARE : {
+		"Harare" : {
 			color : "#F07C2F",
 			"geometry" : {
 				"bounds" : {
