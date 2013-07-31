@@ -22,8 +22,8 @@ document.write(
 
 //Analytics
 var _gaq = _gaq || [];
-_gaq.push([ '_setAccount', 'UA-36902519-1' ]);
-//_gaq.push([ '_setDomainName', '.election-maps.appspot.com' ]);
+_gaq.push([ '_setAccount', 'UA-42856962-1' ]);
+_gaq.push([ '_setDomainName', '.election-zw.appspot.com' ]);
 _gaq.push([ '_trackPageview' ]);
 
 var $body = $('body');
@@ -231,7 +231,7 @@ var wardResult = {"20":{"Prince and Princess Pre-School":{},"Mgoqo Primary Schoo
 
 //////////////////////////////////////////////////
 var resultCache = {};
-var baseUrl = 'http://election-zw.appspot.com';
+var baseUrl = document.location.origin;
 var currentFeature, prevFeature, candidates, stats;
 var useSidebar;
 var scope = "overview";
@@ -433,15 +433,14 @@ function contentTable() {
 				'<div id="auto-update" class="subtitle-text">',	
 					T('subtitle'),
 				'</div>',
-				'<div id="sidebar-results-header" class="scroller">',
+				'<div id="sidebar-results-header">',
 				'<div id="auto-update" class="subtitle-text">This page updates automatically</div>',
-				'<div id="candidate-total"></div>',
-				'<br><div id="disclaimer" class="subtitle-text">', T('disclaimer'), '</div>',
+				'<div class="tipreporting" style="padding-left:5px;"></div>',
 				'</div>',
 			'</div>',
-			'<div id="sidebar-scroll">', //-- class="scroller"				
-				'<div id="map-link" class="small-text" style="padding:8px 4px 4px 4px;">',					
-				'</div>',
+			'<div id="sidebar-scroll" class="scroller">',	
+			'<div id="candidate-total"></div>',
+			'<div id="disclaimer" class="subtitle-text">', T('disclaimer'), '</div>',
 			'</div>',
 		'</div>',
 			
@@ -484,32 +483,7 @@ function formatLegendTable( cells ) {
 
 function renderConstituencyWards( result ) {
 
-//	var names = [];
-//	var state = {};
-//	for (var k in result) {
-//		var temp = 0;
-//		for (var q in result[k]) {
-//			if (params.contest === 'president') {
-//				temp += result[k][q];
-//			} else {				
-//				temp += result[k][q][0];
-//			}			
-//		}
-//		state[k] = temp > 0? 'active-region' : '';
-//		names.push(k);
-//	}	
-//	names.sort(function(a, b){
-//	    /* 
-//	       We avoid reuse of arguments variables in a sort
-//	       comparison function because of a bug in IE <= 8.
-//	       See http://www.zachleat.com/web/array-sort/
-//	    */
-//	    var va = (a === null) ? "" : "" + a;
-//	    var vb = (b === null) ? "" : "" + b;
-//	    return va > vb ? 1 : ( va === vb ? 0 : -1 );
-//	});
 	var region = getName(currentFeature);
-
 	var contentString = S(
 		'<div id="lightbox" class="close-box"></div>',
 		'<div id="subregion_div" style="outline:thin black solid">',
@@ -518,7 +492,7 @@ function renderConstituencyWards( result ) {
 					'<a id="ward-list" href="#">Back</a>',
 				'</div>',
 				'<div id="subregion_label" style="display:inline-block;font-weight:bold;border-bottom:solid thin #ccc;">',
-					'Polling Station Results for ', region, '<span class="current-ward"></span>',
+					'Polling Station Results for ', region,
 				'</div>',
 				'<div style="float:right; padding: 0px 20px;">',
 					'<a class="close-box" href="#">Click to Close</a>',
@@ -664,152 +638,9 @@ function initWardEvents( region, result ) {
 	
 	// set correct window labels
 	if ( params.contest == 'president') {
-		$('#subregion_title div').first().html('Presidential Results for ' + region.toUpperCase() + ' Constituency');
+		$('#subregion_label').first().html('Presidential Results for ' + region + ' Constituency');
 	} else {
-		$('#subregion_title div').first().html('House Results for ' + region.toUpperCase() + ' Constituency');
-	}
-
-	// load and show
-	function positionDiv() {
-		var $subregion_div = $('#subregion_div');
-		var top = ($(window).height() - $subregion_div.height()) / 3;
-		var left = ($(window).width() - $subregion_div.width()) / 2;
-		top = top + "px";
-		left = left + "px";
-		$subregion_div.css({'top':top, 'left':left});
-	}
-	positionDiv();
-	$("#subregion_div, #lightbox").fadeIn(300);
-}
-
-function renderConstituencies(region, result) {	
-	
-	var names = [];
-	var state = {};
-	for (var k in result) {
-		var temp = 0;
-		for (var q in result[k]) {
-			if (params.contest === 'president') {
-				temp += result[k][q];
-			} else {				
-				temp += result[k][q][0];
-			}			
-		}
-		state[k] = temp > 0? 'active-region' : '';
-		names.push(k);
-	}	
-	names.sort(function(a, b){
-	    /* 
-	       We avoid reuse of arguments variables in a sort
-	       comparison function because of a bug in IE <= 8.
-	       See http://www.zachleat.com/web/array-sort/
-	    */
-	    var va = (a === null) ? "" : "" + a;
-	    var vb = (b === null) ? "" : "" + b;
-	    return va > vb ? 1 : ( va === vb ? 0 : -1 );
-	});
-
-	var contentString = S(
-		'<div id="lightbox"></div>',
-		'<div id="subregion_div" style="outline:thin black solid">',
-			'<div id="subregion_title">',
-				'<div id="subregion_label" style="display:inline-block;font-weight:bold;border-bottom:solid thin #ccc;">',
-					'Wards for ', region,
-				'</div>',
-				'<div style="float:right; padding: 0px 20px;">',
-					'<a href="#">Click to Close</a>',
-				'</div>',
-			'</div>',
-			'<div id="subregion">',
-			'<div style="clear:both;padding-left:15px;font-weight:bold;">Wards</div>',
-			'<div id="subregion_list">'
-	);
-
-	// generate list of constituencies
-	for (var i=0; i < names.length; i++) {
-		if ((i % 12) === 0) {
-			if (i !== 0) {
-				contentString = S(contentString, '</ul>');
-			}
-			contentString = S(contentString,'<ul class="sublist">');
-		}
-		contentString = S(contentString, '<li class="',state[names[i]],'">',names[i],'</li>');
-	}
-	contentString = S(contentString, '</ul></div></div>');
-	$body.append( contentString );
-	initConstituencyEvents( result );
-}
-
-function initConstituencyEvents( region, result ) {	
-	$('#subregion_list ul:last').css('border','none');
-	$("#subregion_list li").bind('click', function (e) {
-		var $currentItem  = $(this);				
-		var $sidebar = $('<ul></ul>');
-		var items = $("#subregion li");	
-
-		$.each(items, function (key,value) {
-			$sidebar.append(value);
-			$(value).unbind('click').bind('click', function (e) {
-				var $value = $(this);
-				$("#subregion li").removeClass('selected-region');
-				$value.addClass('selected-region');	
-				
-				var $result_div = $('#constituency_result_div').empty().hide();				
-				var content;
-				if (params.contest === 'president') {
-					var candidates = getTopCandidates(convertToCandidates(result[$value.text()]), 'votes', 24);					
-					content = createInfoContent($value.text(), candidates, null);
-				} else {
-					content = createParliamentaryConstituencyInfo( $value.text(), result[$value.text()] );			
-				}	
-				$result_div.html(content);
-				$result_div.find('td').css({'border':'none'});
-				$result_div.find('.click-for-local').empty();
-				$result_div.find('.tiptitletext').text($value.text()).parent().css({
-					'float':'none', 'text-align':'center', 'padding-bottom':'10px'					
-				});
-				$result_div.find('.tiptitlebar').css('border-bottom','none');
-				$result_div.find('table').css('width','100%');				
-				$result_div.css({
-					'width': '450px',
-					'margin-left': '20px',
-					'margin-top': '10px',
-					'font-size': '14px'
-				});
-				$result_div.show();
-			});			
-		});
-
-		$('#subregion_div').css({'width':'815px'});
-		$('ul.sublist').remove();
-		$sidebar.css({'height': '400px','width':'250px', 'overflow': 'auto',
-			'border':'thin outset #ccc', 'margin-left':'10px','float':'left','display':'inline-block'});		
-		
-		// replace subregion content
-		$('#subregion_list').html($sidebar)
-			.append('<div id="constituency_result_div" style="float:left"></div>')
-			.append('<div style="clear:both"></div>');
-		
-		var padding = 200; // total padding
-		$sidebar.animate({scrollTop: $currentItem.offset().top-padding},'slow');
-		$currentItem.trigger('click');		
-		positionDiv();
-	});	
-
-	// setup light box
-	$('#lightbox, #subregion_title a').click( function(e) {
-		e.preventDefault();
-		$("#lightbox, #subregion_div").fadeOut(300, function () {	
-			$("#subregion li").unbind();
-			$('#lightbox, #subregion_div').unbind().remove();
-		});
-	});
-	
-	// set correct window labels
-	if ( params.contest === 'president') {
-		$('#subregion_title div').first().html('Presidential Results for ' + region.toUpperCase() + ' Constituency');
-	} else {
-		$('#subregion_title div').first().html('House Results for ' + region.toUpperCase() + ' Constituency');
+		$('#subregion_label').first().html('House Results for ' + region + ' Constituency');
 	}
 
 	// load and show
@@ -830,10 +661,8 @@ function formatCandidatesConstituency() {
 	// TODO: perform calculations and get results in correct format
 	loadResult('ward', function (result) {
 		// aggregate results for each constituency	
-//		analytics( params.contest, g.current_constituency, 'region');
-//		var region = getName(currentFeature);
+		analytics( params.contest, 'view', g.current_constituency);
 		renderConstituencyWards(result);
-//		renderConstituencies(region, result);
 	});	
 }
 
@@ -848,9 +677,7 @@ function createParliamentaryConstituencyInfo( region, results ) {
 	var contentString = S(
 		'<div class="tiptitlebar">',
 		'<div style="text-align:center;padding-bottom:10px;">',
-		'<span class="tiptitletext">'+region+'</span>',
-		'</div><div style="clear:left;">',
-		'</div><div class="tipreporting"></div>',
+		'<span class="tiptitletext">'+region+'</span></div>',
 		'<table class="candidates" cellpadding="0" cellspacing="0">',
 		'<tbody><tr><th style="text-align:left; padding-bottom:4px;width:60%;">Candidate</th>',
 		'<th style="text-align:center; padding-bottom:4px;">Party</th>',
@@ -922,8 +749,9 @@ function formatCandidatesTotal(resultsJson) {
 			total = S(formatPercent(reported/total),
 					' reporting (', reported, ' / ', total , ')');					
 		}
+		$(".tipreporting").html(total || '');
 		var contentString = S(
-			'<div class="tipreporting" style="padding-left:5px;">', total || '', '</div>',
+//			'<div class="tipreporting" style="padding-left:5px;">', total || '', '</div>',
 			'<table class="candidates" cellpadding="8px" cellspacing="0">',
 				'<tbody><tr><th style="text-align:left; padding-bottom:4px;">Candidate</th>',
 				'<th style="text-align:right; padding-bottom:4px;"></th>',
@@ -1132,16 +960,12 @@ function formatTip() {
 	if (type !== g.current_level) return "";
 	
 	loadResult(scope, function (result) {
-		if (currentFeature != prevFeature) {
-			console.log("BEGINTIP>>");			
+		if (currentFeature != prevFeature) {		
 			if ( params.contest == 'president' ) {
-				console.log(name);
-				console.log(result);
 				result = result[name][0];		
 			} else {
 				result = result[name];
 			}		
-			console.log("ENDTIP>>");
 			candidates = getTopCandidates(convertToCandidates(result), 'votes', 24);
 			stats = result;
 		}
@@ -1309,9 +1133,6 @@ function loadFeatures(json, style, result) {
 			if (type === g.current_level) {
 				
 				if (params.contest == "president") {
-					console.log("DO>>");
-					console.log(name);
-					console.log(result);
 					jsonData = result[name][0];
 				} else {
 					
@@ -1695,10 +1516,9 @@ scheduleProcess(function () {
 }, 1000);
 
 
-//getScript( S(
-//location.protocol == 'https:' ? 'https://ssl' : 'http://www',
-//'.google-analytics.com/',
-//opt.debug ? 'u/ga_debug.js' : 'ga.js'
-//) );
-//
-//analytics( 'map', 'load' );
+getScript(S(location.protocol == 'https:' ? 'https://ssl' : 'http://www',
+	'.google-analytics.com/',
+	opt.debug ? 'u/ga_debug.js' : 'ga.js'
+));
+
+analytics( 'map', 'load' );
