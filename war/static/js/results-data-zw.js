@@ -1,6 +1,6 @@
 var candidatesInfo = {
 	"ZAPU" : {
-		color : '#FF0000',
+		color : '#8A5C2E',
 		firstName : 'Dumiso',
 		lastName : 'Dabengwa',
 		fullName : 'Dumiso Dabengwa'
@@ -12,19 +12,19 @@ var candidatesInfo = {
 		fullName : 'Robert Mugabe'
 	},
 	"ZDP" : {
-		color : '#E4Af95',
+		color : '#E4E495',
 		firstName : 'Kisinoti',
 		lastName : 'Mukwazhe',
 		fullName : 'Kisinoti Mukwazhe'
 	},
 	"MDC" : {
-		color : '#20FF1F',
+		color : '#20FF20',
 		firstName : 'Welshman',
 		lastName : 'Ncube',
 		fullName : 'Welshman Ncube'
 	},
 	"MDC-T" : {
-		color : '#8A5C2E',
+		color : '#FF0000',
 		firstName : 'Morgan',
 		lastName : 'Tsvangirai',
 		fullName : 'Morgan Tsvangirai'
