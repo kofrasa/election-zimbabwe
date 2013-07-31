@@ -328,8 +328,7 @@ function renderPollingStations(pollingstations){
 		 		$('#addPollingResultForm .const-val').html(constCol.html());
 		 		$('#addPollingResultForm .pol-val').html( $('#data-table .pollingstation tbody tr.selected .pol-col').html());
 		 	});
-		 $('#btnDeletePollingResult').removeClass('disabled')
-		 	.attr('data-toggle','modal');
+		 
 		 	
 		 
 	
@@ -398,10 +397,12 @@ function renderResults(row, data){
 			$(this).removeClass('selected');			
 		});
 		$(this).addClass('selected');
-		$('#btnApprovePollingResult').removeClass('disabled')
-			.attr('data-toggle', 'modal');
-		$('#btnEditPollingResult').removeClass('disabled');
-		$('#btnDeletePollingResult').removeClass('disabled');
+		if(role != 'DATA_ENTRY'){
+			$('#btnApprovePollingResult').removeClass('disabled')
+				.attr('data-toggle', 'modal');		
+			$('#btnDeletePollingResult').removeClass('disabled')
+		 		.attr('data-toggle','modal');
+		}
 	});
 
 }
