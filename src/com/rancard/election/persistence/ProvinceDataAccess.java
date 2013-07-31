@@ -12,6 +12,7 @@ import com.rancard.election.models.Candidate;
 import com.rancard.election.models.Constituency;
 import com.rancard.election.models.ElectionType;
 import com.rancard.election.models.PollingStation;
+import com.rancard.election.models.PollingStationAggregate;
 import com.rancard.election.models.Province;
 import com.rancard.election.models.Result;
 
@@ -75,6 +76,9 @@ public class ProvinceDataAccess {
 			resultSummary.put(province.getName(), data);
 			
 			List<Constituency> constituencies = ConstituencyDataAccess.getConstituenciesByProvince(province.getID());
+			long total = 0;
+			long reported = 0;
+			
 			for(Constituency constituency: constituencies){
 				List<Candidate> candidates = CandidateDataAccess.getCandidatesByConstituencyAndElectionType(constituency.getId(), ElectionType.PRESIDENTIAL);
 				
@@ -87,12 +91,19 @@ public class ProvinceDataAccess {
 					}
 				}
 				
+				List<PollingStationAggregate> agg = PollingStationAggregateDataAccess.getPollingStationAggregate(constituency.getId());
+				if(agg == null || agg.isEmpty()){
+					continue;
+				}
+				
+				total += agg.get(0).getTotal();
+				reported += agg.get(0).getReported();
 				
 			}
 			
 			Map<String, Long> stats = (Map<String, Long>)((List<Map<String, Long>>)resultSummary.get(province.getName())).get(1);
-			stats.put("REPORTED", 0L);
-			stats.put("TOTAL", new Long(10));			
+			stats.put("REPORTED", reported);
+			stats.put("TOTAL", total);			
 			
 		}
 		
