@@ -104,6 +104,10 @@ public class ConstituencyDataAccess {
 			resultSummary.put(constituency.getName(), data);
 			
 			List<Candidate> candidates = CandidateDataAccess.getCandidatesByConstituencyAndElectionType(constituency.getId().longValue(), ElectionType.PRESIDENTIAL);
+			if(candidates == null || candidates.isEmpty()){
+				continue;
+			}
+			
 			for(Candidate candidate: candidates){
 				Map<String, Long> partyResult = (Map<String, Long>)((List<Map<String, Long>>)resultSummary.get(constituency.getName())).get(0);		
 				if(partyResult.containsKey(candidate.getParty())){
@@ -143,6 +147,9 @@ public class ConstituencyDataAccess {
 			
 			Map<String, Long> partyResult = (Map<String, Long>)resultSummary.get(constituency.getName());
 			List<Candidate> candidates = CandidateDataAccess.getCandidatesByConstituencyAndElectionType(constituency.getId(), ElectionType.HOUSE);
+			if(candidates == null || candidates.isEmpty()){
+				continue;
+			}
 			for(Candidate candidate: candidates){					
 				if(!partyResult.containsKey(candidate.getParty())){
 					partyResult.put(candidate.getParty(), 0L);
