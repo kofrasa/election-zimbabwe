@@ -34,7 +34,7 @@ var map;
 
 var gm = google.maps, gme = google.maps.event;
 opt.fontsize = '15px';
-opt.reloadTime = 50 * 1000;
+opt.reloadTime = 60 * 1000;
 
 document.write(
 	'<style type="text/css">',
@@ -217,7 +217,24 @@ document.write(
 	'</div>',
 	'<div id="spinner">',
 		'<img border="0" style="width:128px; height:128px;" src="', imgUrl('spinner-124.gif'), '" />',
-	'</div>'
+	'</div>',
+	
+	'<div id="lightbox" class="close-box"></div>',
+	'<div id="subregion_div" style="outline:thin black solid">',
+		'<div id="subregion_title">',
+			'<div style="float:left; padding: 0px 20px;display: none;">',
+				'<a id="ward-list" href="#">Back</a>',
+			'</div>',
+			'<div id="subregion_label" style="display:inline-block;font-weight:bold;border-bottom:solid thin #ccc;">',
+			'</div>',
+			'<div style="float:right; padding: 0px 20px;">',
+				'<a class="close-box" href="#">Click to Close</a>',
+			'</div>',
+		'</div>',
+		'<div id="subregion">',
+		'<div style="clear:both;padding-left:15px;font-weight:bold;" class="active-region">Wards</div>',
+		'<div id="subregion_list"></div>',
+		'</div>'
 );
 
 // NB: DO NOT REMOVE THIS.
@@ -361,7 +378,7 @@ function loadResult( scope, callback ) {
 		}
 	}
 
-	if ( resultCache[query] ) {
+	if ( !_.isEmpty(resultCache[query]) ) {
 		callback(resultCache[query]);
 		return;
 	}
@@ -484,33 +501,33 @@ function formatLegendTable( cells ) {
 function renderConstituencyWards( result ) {
 
 	var region = getName(currentFeature);
-	var contentString = S(
-		'<div id="lightbox" class="close-box"></div>',
-		'<div id="subregion_div" style="outline:thin black solid">',
-			'<div id="subregion_title">',
-				'<div style="float:left; padding: 0px 20px;display: none;">',
-					'<a id="ward-list" href="#">Back</a>',
-				'</div>',
-				'<div id="subregion_label" style="display:inline-block;font-weight:bold;border-bottom:solid thin #ccc;">',
-					'Polling Station Results for ', region,
-				'</div>',
-				'<div style="float:right; padding: 0px 20px;">',
-					'<a class="close-box" href="#">Click to Close</a>',
-				'</div>',
-			'</div>',
-			'<div id="subregion">',
-			'<div style="clear:both;padding-left:15px;font-weight:bold;" class="active-region">Wards</div>',
-			'<div id="subregion_list">'
-	);
+//	var contentString = S(
+//		'<div id="lightbox" class="close-box"></div>',
+//		'<div id="subregion_div" style="outline:thin black solid">',
+//			'<div id="subregion_title">',
+//				'<div style="float:left; padding: 0px 20px;display: none;">',
+//					'<a id="ward-list" href="#">Back</a>',
+//				'</div>',
+//				'<div id="subregion_label" style="display:inline-block;font-weight:bold;border-bottom:solid thin #ccc;">',
+//				'</div>',
+//				'<div style="float:right; padding: 0px 20px;">',
+//					'<a class="close-box" href="#">Click to Close</a>',
+//				'</div>',
+//			'</div>',
+//			'<div id="subregion">',
+//			'<div style="clear:both;padding-left:15px;font-weight:bold;" class="active-region">Wards</div>',
+//			'<div id="subregion_list"></div>'
+//	);
 	
-	contentString = S(contentString, "<ul class='ward-list'>");	
+	contentString = "<ul class='ward-list'>";	
 	for (var k in result) {
 		var tt = _.isEmpty(result[k])? "ward" : "ward active-region";
 		contentString = S(contentString, '<li class="', tt,'" data-num="', k, '">Ward ', k, "</li>");
 	}
 
-	contentString = S(contentString, '</ul></div></div>');
-	$body.append( contentString );
+	contentString = S(contentString, '</ul>');
+	$("#subregion_list").html( contentString );
+//	$body.append( contentString );
 	initWardEvents( region, result );
 }
 
@@ -571,6 +588,8 @@ function initWardEvents( region, result ) {
 		$("#subregion_list").append(contentString);
 		$('#subregion_list ul:last').css('border','none');
 		
+		$('#subregion_label').first().append(" (Ward " + wardNumber + ") ");
+		
 		// render results
 		$(".polling-list li").on('click', function (e) {
 			
@@ -626,15 +645,6 @@ function initWardEvents( region, result ) {
 			positionDiv();
 		});
 	}
-
-	// setup light box
-	$('.close-box').click( function(e) {
-		e.preventDefault();
-		$("#lightbox, #subregion_div").fadeOut(300, function () {	
-			$("#subregion li").off();
-			$('#lightbox, #subregion_div').off().remove();
-		});
-	});
 	
 	// set correct window labels
 	if ( params.contest == 'president') {
@@ -751,7 +761,6 @@ function formatCandidatesTotal(resultsJson) {
 		}
 		$(".tipreporting").html(total || '');
 		var contentString = S(
-//			'<div class="tipreporting" style="padding-left:5px;">', total || '', '</div>',
 			'<table class="candidates" cellpadding="8px" cellspacing="0">',
 				'<tbody><tr><th style="text-align:left; padding-bottom:4px;">Candidate</th>',
 				'<th style="text-align:right; padding-bottom:4px;"></th>',
@@ -831,12 +840,6 @@ function getScript( url ) {
 	});
 }
 
-function getGeoJSON( url ) {
-	reloadTimer.clear();
-	$('#spinner').show();
-	getScript( cacheUrl( url ) );
-}
-
 function formatCandidateAreaPatch( candidate, max ) {
 	var vsTop = candidate.vsTop;
 	if(isNaN(vsTop)) vsTop = 0;
@@ -882,7 +885,7 @@ function createInfoContent(region, candidates, stats){
 	if ( params.contest === 'president' ){
 		if (stats) {
 			stats = S(formatPercent(stats["REPORTED"]/stats["TOTAL"]),
-					' reporting (', stats["REPORTED"], ' / ', stats["TOTAL"] , ')');					
+					' reporting (', stats["REPORTED"], ' / ', stats["TOTAL"] , ')');				
 		}
 		var contentString = S(
 			'<div class="tiptitlebar">',
@@ -1168,7 +1171,6 @@ function loadFeatures(json, style, result) {
 				// on mouseout
 				google.maps.event.addListener(feature, 'mouseout', function(e) {
 					this.set('fillColor', fillColor);
-//					this.set('strokeColor', strokeColor);
 					this.set('strokeWeight', 1);					
 					currentFeature = null; 
 				});
@@ -1206,7 +1208,6 @@ function loadFeatures(json, style, result) {
 			}		
 			
 			feature.geojsonProperties["style"] = style;
-//			feature.geojsonProperties['ID'] = region;
 			feature.setMap(map);
 			g.featureArray.push(feature);						
 
@@ -1218,6 +1219,16 @@ function loadFeatures(json, style, result) {
 		 resultCache = {}; // clear cache
 		 loadView();
 	 }, opt.reloadTime );
+	 
+//	 (function (query) {
+//		 var timer = setTimeout(function () {
+//			 delete resultCache[query];
+//			 loadResult()
+//		 }, opt.reloadTime);
+//	 })(g.query);
+//	 
+//	 g.query = null;
+	 
 }
 
 function clearFeatures(clean) {		
@@ -1477,17 +1488,7 @@ function initSelectors() {
 			params.contest = this.id.split('-')[1];
 			analytics( params.contest, 'contest');
 			loadView();
-		});
-		
-		// setup light box
-//		$('#lightbox, #subregion_title a').click( function(e) {
-//			e.preventDefault();
-//			$("#lightbox, #subregion_div").fadeOut(300, function () {	
-//				$("#subregion li").unbind();
-//				$('#lightbox, #subregion_div').unbind().remove();
-//			});
-//		});
-//		$("#subregion_div, #lightbox").fadeIn(300);
+		});		
 	}
 }
 
@@ -1510,7 +1511,7 @@ scheduleProcess(function () {
 				function (json) {
 					clearTimeout(timer);
 				});
-			}, 50);
+			}, 500);
 		});
 	}
 }, 1000);
@@ -1522,3 +1523,14 @@ getScript(S(location.protocol == 'https:' ? 'https://ssl' : 'http://www',
 ));
 
 analytics( 'map', 'load' );
+
+$(document).ready(function () {
+	//setup light box
+	$('.close-box').click( function(e) {
+		e.preventDefault();
+		$("#lightbox, #subregion_div").fadeOut(300, function () {	
+			$("#subregion li").off();
+			$("#subregion_div").css({width: "normal"});
+		});
+	});
+});

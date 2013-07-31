@@ -28,7 +28,27 @@ var candidatesInfo = {
 		firstName : 'Morgan',
 		lastName : 'Tsvangirai',
 		fullName : 'Morgan Tsvangirai'
-	}
+	},
+	"AKE": {
+		color: "#c0392b"
+	},
+	"ZANU-NDONGA": {
+		color:"#1abc9c"
+	},
+	"ZPM": {
+		color:"#d35400"
+	},
+	"MKD": {
+		color: "#f1c40f"
+	},
+	FZC: { color: '#FF6633'},
+	UMD: { color: '#FF33CC'},
+	FF: {color: '#993333'},
+	PIMZ: {color: '#FF6666'},
+	VP: {color: '#970026'},
+	FC: {color: '#FF7F00'},
+	INDP: {color: '#B564D4'},
+	PUD: { color: '#336633'}
 };
 
 var geo = {
@@ -68,8 +88,8 @@ var g = {
 		strokeColor : "#ffffff",
 		strokeOpacity : 1,
 		strokeWeight : 1,
-		fillColor : "#555555",
-		fillOpacity : 0.5
+		fillColor : "#656565",
+		fillOpacity : 0.7
 	},
 	featureArray : [],
 	current_geo : null,
