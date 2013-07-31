@@ -89,7 +89,7 @@ var g = {
 		"wards" : 500
 	},
 	provinceData : {
-		"Matebeleland North" : {
+		"Matabeleland North" : {
 			color : "#996699",
 			"geometry" : {
 				"bounds" : {
