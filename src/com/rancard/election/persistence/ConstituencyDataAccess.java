@@ -12,6 +12,7 @@ import com.rancard.election.models.Candidate;
 import com.rancard.election.models.Constituency;
 import com.rancard.election.models.ElectionType;
 import com.rancard.election.models.PollingStation;
+import com.rancard.election.models.PollingStationAggregate;
 import com.rancard.election.models.Province;
 import com.rancard.election.models.Result;
 
@@ -111,10 +112,19 @@ public class ConstituencyDataAccess {
 					partyResult.put(candidate.getParty(), candidate.getResult());
 				}
 			}
-
+			
 			Map<String, Long> stats = (Map<String, Long>)((List<Map<String, Long>>)resultSummary.get(constituency.getName())).get(1);
-			stats.put("REPORTED", 0L);
-			stats.put("TOTAL", new Long(10));			
+			
+			List<PollingStationAggregate> agg = PollingStationAggregateDataAccess.getPollingStationAggregate(constituency.getId());
+			if(agg == null || agg.isEmpty()){
+				stats.put("REPORTED", 0L);
+				stats.put("TOTAL", 0L);
+				
+			}else{			
+			
+				stats.put("REPORTED", agg.get(0).getReported());
+				stats.put("TOTAL", agg.get(0).getTotal());
+			}
 			
 		}
 		

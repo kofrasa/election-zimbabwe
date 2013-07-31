@@ -229,15 +229,15 @@ public class ResultApi extends HttpServlet{
 				r.isApproved(Boolean.TRUE);				
 				ResultDataAccess.insert(r);
 				
-//				PollingStation pol = pollingStations.get(0);
-//				if(pol.getHasResult() == null || !pol.getHasResult()){
-//					List<PollingStationAggregate> aggs = PollingStationAggregateDataAccess.getPollingStationAggregate(pol.getConstituencyID());
-//					aggs.get(0).setReported(aggs.get(0).getReported()+1);
-//					PollingStationAggregateDataAccess.insert(aggs.get(0));
-//					pol.setHasResult(true);
-//					PollingStationDataAccess.insert(pol);
-//				}
-//
+				PollingStation pol = pollingStations.get(0);
+				if(pol.getHasResult() == null || !pol.getHasResult()){
+					List<PollingStationAggregate> aggs = PollingStationAggregateDataAccess.getPollingStationAggregate(pol.getConstituencyID());
+					aggs.get(0).setReported(aggs.get(0).getReported()+1);
+					PollingStationAggregateDataAccess.insert(aggs.get(0));
+					pol.setHasResult(true);
+					PollingStationDataAccess.insert(pol);
+				}
+
 				for(Result rj: resultsJson){
 					if(rj.getId().longValue() == r.getId().longValue()){
 						rj.setApprovedBy(approvedBy);
