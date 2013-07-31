@@ -438,7 +438,7 @@ function contentTable() {
 			
 			'</div>',
 			'<div style="width:100%;">',
-			'<a id="zoom-btn" class="button disable">Go Back</a>',
+			'<a id="zoom-btn" class="button disable">Overview</a>',
 				'<div id="map" style="width:100%; height:100%;">',
 				'</div>',
 			'</div>',
@@ -584,7 +584,7 @@ function initWardEvents( region, result ) {
 			}
 			contentString = S(contentString, '<li class="',state[names[i]],'">',names[i],'</li>');
 		}
-		contentString = S(constentString,  "</div>");
+		contentString = S(contentString,  "</div>");
 		
 		$("#subregion_list").append(contentString);
 		
