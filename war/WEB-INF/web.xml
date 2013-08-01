@@ -9,10 +9,6 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
     <servlet-class>com.rancard.election.DataEntryHandler</servlet-class>
   </servlet>
   <servlet>
-    <servlet-name>Test</servlet-name>
-    <servlet-class>com.rancard.election.test.Test</servlet-class>
-  </servlet>
-  <servlet>
     <servlet-name>UserApi</servlet-name>
     <servlet-class>com.rancard.election.json.UserApi</servlet-class>
   </servlet>
@@ -75,10 +71,6 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
   <servlet-mapping>
     <servlet-name>PollingStationApi</servlet-name>
     <url-pattern>/pollingstation</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>Test</servlet-name>
-    <url-pattern>/test</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>ResultApi</servlet-name>

@@ -4,12 +4,18 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Level;
 
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 
+import com.google.appengine.api.memcache.ErrorHandlers;
+import com.google.appengine.api.memcache.MemcacheService;
+import com.google.appengine.api.memcache.MemcacheServiceFactory;
 import com.rancard.election.models.ElectionType;
 import com.rancard.election.models.PollingStation;
+import com.rancard.election.persistence.util.CacheUtil;
+import com.sun.org.apache.regexp.internal.recompile;
 
 public class PollingStationDataAccess {
 	
@@ -34,16 +40,22 @@ public class PollingStationDataAccess {
 	  
 	}
 	
-	public static List<PollingStation> getPollingStations(boolean limit) {
+	public static List<PollingStation> getPollingStations() {
+		@SuppressWarnings("unchecked")
+		ArrayList<PollingStation> pollingStations = (ArrayList<PollingStation> )CacheUtil.getCachedObject("pollingstations");
+		
+		if(!(pollingStations == null || pollingStations.isEmpty())){
+			return pollingStations;
+		}
+		
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 	    Query query = pm.newQuery(PollingStation.class);
 	    
-	    if(limit){
-	    	query.setRange(0, 200);
-	    }
+	    
 	    @SuppressWarnings("unchecked")
-		List<PollingStation> entries = (List<PollingStation>) query.execute();
+		List<PollingStation> entries = (List<PollingStation>) query.execute();	    
 	    pm.close();
+	    CacheUtil.cache("pollingstations", new ArrayList<>(entries));
 	    return entries;
 	}
 	
@@ -134,7 +146,7 @@ public class PollingStationDataAccess {
 	}
 	
 	public static List<PollingStation> getPollingStations(String province, String constituency, String ward){
-		List<PollingStation> pollingStations = getPollingStations(false);
+		List<PollingStation> pollingStations = getPollingStations();
 		List<PollingStation> results = null;
 		
 		if(province != null){

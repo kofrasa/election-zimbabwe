@@ -15,6 +15,7 @@ import com.rancard.election.models.PollingStation;
 import com.rancard.election.models.PollingStationAggregate;
 import com.rancard.election.models.Province;
 import com.rancard.election.models.Result;
+import com.rancard.election.persistence.util.CacheUtil;
 
 public class ConstituencyDataAccess {
 	public static void insert(String name, long province, String provinceName){		
@@ -27,14 +28,25 @@ public class ConstituencyDataAccess {
 		pm.close();
 	}
 		
+
 	public static List<Constituency> getConstituencies() {
+		
+		@SuppressWarnings("unchecked")
+		ArrayList<Constituency> constituencies = (ArrayList<Constituency>)CacheUtil.getCachedObject("constituencies");
+		
+		if(!(constituencies == null || constituencies.isEmpty())){
+			return constituencies;
+		}
+		
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 	    Query query = pm.newQuery(Constituency.class);
 	    query.setOrdering("province desc");
 	    
 	    @SuppressWarnings("unchecked")
-		List<Constituency> entries = (List<Constituency>) query.execute();
+		List<Constituency> entries = (List<Constituency>) query.execute();	    
 	    pm.close();
+	    
+	    CacheUtil.cache("constituencies", new ArrayList<>(entries));
 	    return entries;
 	}
 	
@@ -50,45 +62,53 @@ public class ConstituencyDataAccess {
 	}
 	
 	public static List<Constituency> getConstituenciesByID(long id){
-		PersistenceManager pm = PMF.get().getPersistenceManager();
+		List<Constituency> constituencies = getConstituencies();
+		List<Constituency> result = new ArrayList<>();
+		for(Constituency con: constituencies){
+			if(con.getId().longValue()== id){
+				result.add(con);
+			}
+		}
 		
-	    Query query = pm.newQuery(Constituency.class);
-	    query.setFilter("id == idParam");	    
-	    query.declareParameters("long idParam");
-	    
-	    @SuppressWarnings("unchecked")
-		List<Constituency> constituencies = (List<Constituency>) query.execute(id);
-	    
-	    pm.close();
-	    return constituencies;
+	    return result;
 	}
 	
 	public static List<Constituency> getConstituenciesByProvince(long province){
+		@SuppressWarnings("unchecked")
+		ArrayList<Constituency> provinceConstituencies = (ArrayList<Constituency>)CacheUtil.getCachedObject("constituencies"+province);
+		
+		if(!(provinceConstituencies == null || provinceConstituencies.isEmpty())){
+			return provinceConstituencies;
+		}
+		
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 		
 	    Query query = pm.newQuery(Constituency.class);
 	    query.setFilter("province == provinceParam");	    
 	    query.declareParameters("long provinceParam");
 	    
+	    query.setOrdering("name asc");
+	    
+	    
 	    @SuppressWarnings("unchecked")
 		List<Constituency> constituencies = (List<Constituency>) query.execute(province);
 	    
 	    pm.close();
+	    
+	    CacheUtil.cache("constituencies"+province, new ArrayList<>(constituencies));
 	    return constituencies;
 	}
 	
 	public static List<Constituency>  getConstituenciesByName(String name){
-		PersistenceManager pm = PMF.get().getPersistenceManager();
+		List<Constituency> constituencies = getConstituencies();
+		List<Constituency> result = new ArrayList<>();
+		for(Constituency con: constituencies){
+			if(con.getName().equalsIgnoreCase(name)){
+				result.add(con);
+			}
+		}
 		
-	    Query query = pm.newQuery(Constituency.class);
-	    query.setFilter("name == nameParam");	    
-	    query.declareParameters("String nameParam");
-	    
-	    @SuppressWarnings("unchecked")
-		List<Constituency> constituencies = (List<Constituency>) query.execute(name);
-	    
-	    pm.close();
-	    return constituencies;
+	    return result;
 	}
 	
 	

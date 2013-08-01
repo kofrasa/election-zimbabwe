@@ -20,15 +20,6 @@ public class PollingStationAggregateDataAccess {
 		pm.close();
 	}
 	
-	public synchronized static void increaseTotal(long constiuency){
-		List<PollingStationAggregate> aggs = getPollingStationAggregate(constiuency);
-		if(aggs == null || aggs.isEmpty()){
-			PollingStationAggregateDataAccess.insert(constiuency, 1L, 0L);	
-		}else{
-			PollingStationAggregateDataAccess.insert(constiuency, aggs.get(0).getTotal()+1, 0L);	
-		}
-	}
-	
 	public static List<PollingStationAggregate> getPollingStationAggregate(){
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 		Query query = pm.newQuery(PollingStationAggregate.class);	    
@@ -52,6 +43,17 @@ public class PollingStationAggregateDataAccess {
 	    
 		pm.close();
 		return aggs;
+	}
+
+	public synchronized static void increaseTotal(Long constituencyID) {
+		List<PollingStationAggregate> aggs = getPollingStationAggregate(constituencyID);
+		
+		if(aggs == null || aggs.isEmpty()){
+			PollingStationAggregateDataAccess.insert(constituencyID, 1L, 0L);
+		}else{
+			PollingStationAggregateDataAccess.insert(constituencyID, aggs.get(0).getTotal()+1, aggs.get(0).getReported());
+		}
+		
 	}
 	
 	
