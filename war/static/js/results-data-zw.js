@@ -88,8 +88,8 @@ var g = {
 		strokeColor : "#ffffff",
 		strokeOpacity : 1,
 		strokeWeight : 1,
-		fillColor : "#656565",
-		fillOpacity : 0.7
+		fillColor : "#777",
+		fillOpacity : 0.5
 	},
 	featureArray : [],
 	current_geo : null,

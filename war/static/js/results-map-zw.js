@@ -289,7 +289,6 @@ function getResultJSON( url, onSuccess, onError ) {
 		url: url,
 		dataType: 'json',
 		timeout: timeout,
-		cache: false,
 		success: function (data) {
 			onSuccess(data);
 		},
@@ -346,7 +345,6 @@ function getType(feature) {
 
 function loadResult( scope, callback, nocache ) {
 
-	var testResult;
 	var query;
 
 	callback = callback || region || scope;	
@@ -376,14 +374,12 @@ function loadResult( scope, callback, nocache ) {
 		}
 	}
 	
-	if ( resultCache[query] ) {
-		callback(resultCache[query]);
-		return;
+	if (opt.debug) {		
+		resultCache[query] = getTestData(scope);
 	}
 	
-	if (opt.debug) {		
-		resultCache[query] = testResult = getTestData(scope);
-		callback(testResult);
+	if ( resultCache[query] ) {
+		callback(resultCache[query]);
 		return;
 	}
 	
@@ -399,12 +395,6 @@ function loadResult( scope, callback, nocache ) {
 		function( jqXHR, status ) { // error
 			resume();
 			console.error("Could not load data from server");
-			// show error message
-			if (opt.debug) {			
-				resultCache[query] = testResult;
-				callback(testResult);
-				return;
-			}
 		}
 	);
 }
@@ -455,7 +445,8 @@ function contentTable() {
 			'</div>',
 			'<div id="sidebar-scroll" class="scroller">',	
 			'<div id="candidate-total"></div>',
-			'<div id="disclaimer" class="subtitle-text">', T('disclaimer'), '</div>',
+			'<div id="disclaimer" class="subtitle-text" style="padding-top:3px;padding-bottom:5px;">', 
+			'<span><b>Disclaimer:</b>&nbsp;</span>', T('disclaimer'), '</div>',
 			'</div>',
 		'</div>',
 			
@@ -1107,7 +1098,7 @@ function loadFeatures(json, style, result) {
 		$("#candidate-total").html(formatCandidatesTotal( result ));
 	}	
 	
-	var feature, cand, color, region, jsonData;
+	var feature, cand, region, jsonData;
 
 	for ( var i = 0; i < feature_collection.length; i++) {
 		
@@ -1186,11 +1177,11 @@ function loadFeatures(json, style, result) {
 				 			feature.set('fillColor', g.default_style.fillColor);
 				 			feature.set('fillOpacity', g.default_style.fillOpacity);
 				 		} else {
-				 			var seats = presidentialResult[name][1]['TOTAL'];
-				 			var op = cand[0].votes / seats;
-				 			op = (op < 0.03) ? 0.03 : op;
-				 			feature.set('fillColor', fillColor);
-					 		feature.set('fillOpacity', op);
+//				 			var seats = presidentialResult[name][1]['TOTAL'];
+//				 			var op = cand[0].votes / seats;
+//				 			op = (op < 0.03) ? 0.03 : op;
+//				 			feature.set('fillColor', fillColor);
+//					 		feature.set('fillOpacity', op);
 				 		}	 		
 				 	}
 				}
