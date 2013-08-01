@@ -34,7 +34,7 @@ var map;
 
 var gm = google.maps, gme = google.maps.event;
 opt.fontsize = '15px';
-opt.reloadTime = 60 * 1000;
+opt.reloadTime = 300 * 1000;
 
 document.write(
 	'<style type="text/css">',
@@ -1205,7 +1205,8 @@ function loadFeatures(json, style, result) {
 	}
 	
 	resizeViewOnly();
-	 reloadTimer.set( function () {		 
+	 reloadTimer.set( function () {
+		 resultCache = {};
 		 loadView();
 	 }, opt.reloadTime );
 	 
@@ -1516,13 +1517,13 @@ $(document).ready(function () {
 });
 
 // refresh data every 2 minutes
-setInterval(function () {
-	for (var q in resultCache) {
-		getResultJSON( 
-			baseUrl + q, // url
-			function( data ) { // success
-				resultCache[q] = data;
-			}
-		);
-	}
-}, 120 * 1000);
+//setInterval(function () {
+//	for (var q in resultCache) {
+//		getResultJSON( 
+//			baseUrl + q, // url
+//			function( data ) { // success
+//				resultCache[q] = data;
+//			}
+//		);
+//	}
+//}, 240 * 1000);
