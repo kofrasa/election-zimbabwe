@@ -757,7 +757,7 @@ function formatCandidatesTotal(resultsJson) {
 	if(params.contest === 'president') {
 		if (total) {
 			total = S(formatPercent(reported/total),
-					' reporting (', reported, ' / ', total , ')');					
+					' reporting (', reported, ' / ', total , ' centres)');					
 		}
 		$(".tipreporting").html(total || '');
 		var contentString = S(
