@@ -4,10 +4,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Logger;
 
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 
+import com.rancard.election.json.WardApi;
 import com.rancard.election.models.Candidate;
 import com.rancard.election.models.Constituency;
 import com.rancard.election.models.ElectionType;
@@ -15,8 +17,10 @@ import com.rancard.election.models.PollingStation;
 import com.rancard.election.models.PollingStationAggregate;
 import com.rancard.election.models.Province;
 import com.rancard.election.models.Result;
+import com.rancard.election.persistence.util.CacheUtil;
 
 public class ProvinceDataAccess {
+	private static final Logger log = Logger.getLogger(ProvinceDataAccess.class.getName());
 	
 	public static void insert(String province){		
 		insert(new Province(province));
@@ -29,25 +33,33 @@ public class ProvinceDataAccess {
 	}
 		
 	public static List<Province> getProvinces() {
+		@SuppressWarnings("unchecked")
+		ArrayList<Province> provinces = (ArrayList<Province> )CacheUtil.getCachedObject("provinces");
+		
+		if(!(provinces == null || provinces.isEmpty())){
+			return provinces;
+		}
+		
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 	    Query query = pm.newQuery(Province.class);
 	    
 	    @SuppressWarnings("unchecked")
 		List<Province> entries = (List<Province>) query.execute();
 	    pm.close();
+	    
+	    CacheUtil.cache("provinces", new ArrayList<>(entries));
 	    return entries;
 	}
 	
 	public static List<Province> getProvinceByID(long id){
-		PersistenceManager pm = PMF.get().getPersistenceManager();
-
-		Query query = pm.newQuery(Province.class);
-	    query.setFilter("id == idParam");	    
-	    query.declareParameters("long idParam");
-	    
-	    @SuppressWarnings("unchecked")
-		List<Province> entries = (List<Province>) query.execute(id);
-		pm.close();
+		List<Province> provinces = getProvinces();
+		List<Province> entries = new ArrayList<>();
+		
+		for(Province province: provinces){
+			if(province.getID().longValue() == id){
+				entries.add(province);
+			}
+		}
 		
 		return entries;
 		
@@ -66,8 +78,15 @@ public class ProvinceDataAccess {
 	
 	@SuppressWarnings("unchecked")
 	public static Map<String, Object> summariseProvincePresidentialData(){
+		HashMap<String, Object> presidentialSummary = (HashMap<String, Object>)CacheUtil.getCachedObject("presdentialsummary");
+		
+		if(!(presidentialSummary == null || presidentialSummary.isEmpty())){
+			log.severe("Using cahed presdential summary");
+			return presidentialSummary;
+		}
+		
 		List<Province> provinces = ProvinceDataAccess.getProvinces();
-		Map<String, Object>  resultSummary = new HashMap<>();
+		HashMap<String, Object>  resultSummary = new HashMap<>();
 
 		for(Province province: provinces){				
 			List<Map<String, Long>> data =  new ArrayList<Map<String, Long>>(); 
@@ -106,12 +125,18 @@ public class ProvinceDataAccess {
 			stats.put("TOTAL", total);			
 			
 		}
-		
+		CacheUtil.cache("presdentialsummary", resultSummary);
 		return resultSummary;
 	}
 	
 	@SuppressWarnings("unchecked")
 	public static Map<String, Object> summariseProvincePaliamentaryData(){
+		HashMap<String, Object> paliamentarySummary = (HashMap<String, Object>)CacheUtil.getCachedObject("paliamentarysummary");
+		if(!(paliamentarySummary == null || paliamentarySummary.isEmpty())){
+			log.severe("Using cahed paliamentary summary");
+			return paliamentarySummary;
+		}
+		
 		List<Province> provinces = ProvinceDataAccess.getProvinces();
 		Map<String, Object>  resultSummary = new HashMap<>();
 
@@ -135,9 +160,12 @@ public class ProvinceDataAccess {
 					partyResult.put(c.getParty(), partyResult.get(c.getParty())+1);
 				}				
 				
-			}			
+			}	
 			
-		}		
+			
+		}	
+		CacheUtil.cache("paliamentarysummary", resultSummary);
+		
 		return resultSummary;
 	}
 	

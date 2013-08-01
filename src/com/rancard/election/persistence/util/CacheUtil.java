@@ -14,7 +14,7 @@ import net.sf.jsr107cache.CacheFactory;
 import net.sf.jsr107cache.CacheManager;
 
 public class CacheUtil {
-	private static final Logger log = Logger.getLogger(WardApi.class.getName());
+	private static final Logger log = Logger.getLogger(CacheUtil.class.getName());
 	private static Cache cache;
 	
 	private static Cache createCache() {
