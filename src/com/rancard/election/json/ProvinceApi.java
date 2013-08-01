@@ -45,7 +45,7 @@ public class ProvinceApi extends HttpServlet{
 				resp.getWriter().println(gson.toJson(ProvinceDataAccess.summariseProvincePaliamentaryData()));
 			}
 		}else{
-			resp.getWriter().println(gson.toJson(ProvinceDataAccess.getProvinces()));
+			resp.getWriter().println(gson.toJson(ProvinceDataAccess.getProvinces().subList(0, 200)));
 		}
 	}
 	

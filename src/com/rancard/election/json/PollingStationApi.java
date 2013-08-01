@@ -50,7 +50,7 @@ public class PollingStationApi extends HttpServlet{
 					constituency, ward)));
 		}else{
 			
-			resp.getWriter().println(gson.toJson((PollingStationDataAccess.getPollingStations(true))));
+			resp.getWriter().println(gson.toJson((PollingStationDataAccess.getPollingStations().subList(0, 200))));
 		}
 	}
 	
@@ -88,6 +88,6 @@ public class PollingStationApi extends HttpServlet{
 		PollingStationAggregateDataAccess.increaseTotal(w.getConstituencyID());		
 		
 		
-		resp.getWriter().println((new Gson()).toJson(PollingStationDataAccess.getPollingStations(true)));
+		resp.getWriter().println((new Gson()).toJson(PollingStationDataAccess.getPollingStations()));
 	}
 }

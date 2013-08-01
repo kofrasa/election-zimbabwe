@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <datastore-indexes autoGenerate="true">
+    <datastore-index kind="Constituency" ancestor="false" source="manual">
+        <property name="province" direction="asc"/>
+        <property name="name" direction="asc"/>
+    </datastore-index>
 <!--     <datastore-index kind="Constituency" ancestor="false"> -->
 <!--         <property name="name" direction="asc" /> -->
 <!--     </datastore-index> -->
