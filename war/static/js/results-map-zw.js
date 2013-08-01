@@ -285,14 +285,13 @@ function getTestData(scope) {
 
 function getResultJSON( url, onSuccess, onError ) {
 	var timeout = 15 * 1000;
-	$('#spinner').show();
 	$.ajax({
 		url: url,
 		dataType: 'json',
 		timeout: timeout,
+		cache: false,
 		success: function (data) {
 			onSuccess(data);
-			$('#spinner').hide();
 		},
 		error: function( jqXHR, status ) {
 			if( status == 'timeout' ) {
@@ -300,7 +299,6 @@ function getResultJSON( url, onSuccess, onError ) {
 			}
 			else if (opt.debug) {
 				onError();
-				$('#spinner').hide();
 			} else {
 				setTimeout( function() {
 					getResultJSON( url, onSuccess, onError );
@@ -346,7 +344,7 @@ function getType(feature) {
 	return null;
 }
 
-function loadResult( scope, callback ) {
+function loadResult( scope, callback, nocache ) {
 
 	var testResult;
 	var query;
@@ -377,8 +375,8 @@ function loadResult( scope, callback ) {
 			query = S(query, "&constituency_name=", encodeURIComponent(g.current_constituency));
 		}
 	}
-
-	if ( !_.isEmpty(resultCache[query]) ) {
+	
+	if ( resultCache[query] ) {
 		callback(resultCache[query]);
 		return;
 	}
@@ -942,14 +940,6 @@ function createInfoContent(region, candidates, stats){
 	return contentString;
 }
 
-function getRegionJSON(region){
-	for(var k in results){
-		if(k.toString().toLowerCase().indexOf(region.toLowerCase()) !== -1){
-			return results[k];			
-		}
-	}
-}
-
 var tipOffset = { x:10, y:20 };
 var $maptip = $('#maptip'), tipHtml;
 
@@ -1215,19 +1205,9 @@ function loadFeatures(json, style, result) {
 	}
 	
 	resizeViewOnly();
-	 reloadTimer.set( function () {
-		 resultCache = {}; // clear cache
+	 reloadTimer.set( function () {		 
 		 loadView();
 	 }, opt.reloadTime );
-	 
-//	 (function (query) {
-//		 var timer = setTimeout(function () {
-//			 delete resultCache[query];
-//			 loadResult()
-//		 }, opt.reloadTime);
-//	 })(g.query);
-//	 
-//	 g.query = null;
 	 
 }
 
@@ -1534,3 +1514,15 @@ $(document).ready(function () {
 		});
 	});
 });
+
+// refresh data every 2 minutes
+setInterval(function () {
+	for (var q in resultCache) {
+		getResultJSON( 
+			baseUrl + q, // url
+			function( data ) { // success
+				resultCache[q] = data;
+			}
+		);
+	}
+}, 120 * 1000);
